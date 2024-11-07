@@ -38,6 +38,13 @@ a {
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    /*
+        하나의 요소에 width/height와 padding이 
+        동시에 들어가면 넓이/높이가 늘어남
+        이걸 막는 코드 
+        --- 입력한 넓이/높이 내부로 여백이 들어가도록 수정
+    */
 }
 
 .wrapper {
@@ -147,6 +154,36 @@ a {
     padding: 18px 0; 
     text-align: center;
     /* 여백을 두개만 쓰면 첫번째는 위아래 두번째는 좌우여백 */
+}
+
+.pass h1 {
+    font-size: 45px;
+    font-weight: 800;
+    color: #1d1d1d;
+    margin: 124px 0 16px 0;
+}
+.pass .list {
+    margin: 33px 0 0 0;
+}
+.pass .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.pass .list ul li {
+    width: 404px;
+    height: 242px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 55px 0 0 40px;
+}
+.pass .list ul li strong {
+    color: #034ea2;
+}
+.pass .list ul li h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1d1d1d;
+    margin: 11px 0 30px 0;
 }
 
 body {
