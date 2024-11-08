@@ -70,6 +70,9 @@ li, ul, ol {
         단, 내가 예상한 것보다 사이즈가 너무 커지면
         display:inline-block; */
 }
+.story .tit .more a:hover {
+    background-color: #e96532;
+}
 .story .list {
     margin: 23px 0 0 0;
 }
