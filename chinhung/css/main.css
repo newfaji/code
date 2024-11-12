@@ -1,0 +1,51 @@
+@import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 17px; /* 글자크기 17px */
+    font-weight: 400; /* 두께 400 regular */
+    color: #3d3d3d; /* 글자색상 */
+    line-height: 1.4; /* 행간 - 배수 */
+    letter-spacing: 0; /* -20준 경우 -0.02em */
+}
+.wrapper {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    margin: 34px 0 0 0;
+}
+header .gnb ul {
+    display: flex;
+}
+header .gnb ul li a {
+    font-size: 22px;
+    color: #1D1D1D;
+    padding: 34px 26px 34px 26px;
+    display: block; 
+    /* a태그는 무조건 block 또는 inline-block */
+}
+
+.visual {
+    height: 700px;
+    background: url(../images/visual_bg.png) no-repeat center center / cover;
+    color: #fff;
+    text-align: right;
+}
+.visual h2 {
+    font-size: 55px;
+    line-height: 1.2;
+    padding: 160px 0 11px 0;
+    letter-spacing: -0.02em; /* -20  */
+}
+.visual h2 strong {
+    font-weight: 700;
+}
