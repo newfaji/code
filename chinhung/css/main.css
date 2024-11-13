@@ -92,6 +92,12 @@ header .gnb ul li a {
     padding: 12px 0 12px 0;
     margin: 18px 0 0 0;
 }
+/* a에 마우스를 올렸을때 자세히보기 스타일 */
+.biz .list ul li a:hover .more {
+    border-color: #015BD5;
+    background-color: #015BD5;
+    color: #fff;
+}
 
 .brand {
     margin: 116px 0 0 0;
@@ -128,5 +134,39 @@ header .gnb ul li a {
 }
 
 footer {
-    margin: 500px 0 0 0;
+    background-color: #2d2d2d;
+    color: rgba(255,255,255,0.8);
+    padding: 70px 0 84px 0;
+}
+footer .f_nav ul {
+    display: flex;
+}
+footer .f_nav ul li {
+    margin: 0 39px 0 0;
+}
+footer .f_nav ul li:last-child {
+    margin-right: 0;
+}
+footer .f_nav ul li.privacy {
+    font-weight: 900;
+}
+/*
+    li.privacy (띄어쓰기 없음) 라는 의미는
+    <li class="privacy"> 이렇게 코딩된 요소를 선택
+    --- li 중에서 privacy클래스가 있는 요소
+
+    li .privacy (띄어쓰기 있음)
+    <li>
+        <div class="privacy"> 
+    -- li안에 privacy라는 클래스를 갖은 요소
+*/
+footer .f_info {
+    margin: 24px 0 24px 0;
+}
+footer .f_info span {
+    margin: 0 15px 0 0;
+    display: inline-block;
+}
+footer .copyright {
+    color: rgba(255,255,255,0.6);
 }
