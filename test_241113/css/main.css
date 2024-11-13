@@ -1,0 +1,104 @@
+@import url(default.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 17px; /* 글자크기 17px */
+    font-weight: 400; /* 두께 400 regular */
+    color: #3d3d3d; /* 글자색상 */
+    line-height: 1.4; /* 행간 - 배수 */
+    letter-spacing: 0; /* -20준 경우 -0.02em */
+    word-break: keep-all; /* 단어로(여백을 기준으로) 줄바꿈 */
+    word-wrap: break-word; 
+    /* 단어가 너무 길어서 줄바꿈이 안될때 강제로 줄바꿈
+        word-break: keep-all;로 단어별로(여백) 줄바꿈때문에 생기는 오류 수정 */
+}
+.wrapper {
+    width: 1260px;
+    margin: 0 auto;
+    position: relative;
+}
+#wrap {
+    min-width: 1300px;
+    /* 브라우저의 최소 넓이를 지정
+       - 작은 브라우저에서 가로스크롤이 생기면 배경이 짤려서
+       wrapper에서 지정한 width에 좌우여백 20px씩 준 값
+       1260 + 40 = 1300 */
+}
+
+.sec01 {
+    height: 300px;
+    background-color: #f4f4f4;
+}
+.box {
+    width: 200px;
+    height: 150px;
+    border: 2px solid #3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sec02 {
+    height: 300px;
+    background-color: #FBFFBE;
+    position: relative; /* box03의 정렬의 기준 */
+}
+.sec02 .box02 {
+    position: absolute;
+    /* sec02안에 있기 때문에 다른 요소를 기준으로 정렬하고 싶어도 
+      sec02에 position 속성이 있기 때문에 무조건 sec02를 기준으로 정렬 */
+    left: 50%;
+    top: 0;
+}
+.sec02 .box03 {
+    position: absolute; /* sec02을 기준으로 정렬 */
+    right: 10px;
+    bottom: 10px;
+}
+
+.news {
+    margin: 100px 0 500px 0;
+}
+.news .wrapper {
+    position: relative;
+    /* more 정렬의 기준점 */
+}
+.news h2 {
+    font-size: 45px;
+    font-weight: 900;
+    color: #1d1d1d;
+    margin: 0 0 20px 0;
+    position: relative; /* before 정렬의 기준 */
+}
+.news h2::before {
+    position: absolute;
+    left: 0;
+    top: -5px;
+    width: 50px;
+    height: 2px;
+    background-color: #015BD5;
+    content: "";
+}
+.news h2::after {
+    content: "";
+}
+.news .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.news .list ul li {
+    width: 23%;
+    height: 100px;
+    background-color: #f4f4f4;
+}
+.news .more {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.news .more a {
+    background-color: #015BD5;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 50px;
+    display: inline-block;
+}
