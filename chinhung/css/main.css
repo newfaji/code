@@ -7,6 +7,10 @@ body {
     color: #3d3d3d; /* 글자색상 */
     line-height: 1.4; /* 행간 - 배수 */
     letter-spacing: 0; /* -20준 경우 -0.02em */
+    word-break: keep-all; /* 단어로(여백을 기준으로) 줄바꿈 */
+    word-wrap: break-word; 
+    /* 단어가 너무 길어서 줄바꿈이 안될때 강제로 줄바꿈
+        word-break: keep-all;로 단어별로(여백) 줄바꿈때문에 생기는 오류 수정 */
 }
 .wrapper {
     width: 1260px;
@@ -47,5 +51,82 @@ header .gnb ul li a {
     letter-spacing: -0.02em; /* -20  */
 }
 .visual h2 strong {
-    font-weight: 700;
+    font-weight: 900;
+}
+
+.biz .tit {
+    text-align: center;
+    margin: 129px 0 35px 0;
+}
+.biz .tit h2 {
+    font-weight: 900;
+    font-size: 45px;
+    letter-spacing: -0.02em;
+}
+.biz .tit h2 strong {
+    color: #015BD5;
+}
+.biz .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.biz .list ul li {
+    width: 297px;
+}
+.biz .list ul li a {
+    display: block; /* a태그는 block아님 inline-block 필수 */
+    text-align: center;
+}
+.biz .list ul li a .inner {
+    margin: 0 20px 0 20px;
+}
+.biz .list ul li a h3 {
+    font-size: 35px;
+    color: #1d1d1d;
+    letter-spacing: -0.02em;
+    margin: 15px 0 10px 0;
+}
+.biz .list ul li a .more {
+    border: 1px solid #CCCCCC;
+    display: block;
+    padding: 12px 0 12px 0;
+    margin: 18px 0 0 0;
+}
+
+.brand {
+    margin: 116px 0 0 0;
+    height: 723px;
+    background: url(../images/brand_bg.png) no-repeat center center / cover;
+    color: #fff;
+}
+.brand h2 {
+    font-size: 45px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    padding: 190px 0 20px 0;
+}
+.brand .more {
+    margin: 30px 0 0 0;
+}
+.brand .more a {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 12px 44px 12px 44px;
+}
+.brand .more a:hover {
+    background-color: #015BD5;
+    border-color: #015BD5;
+    /* 만약 border가 있던 버튼에 
+       마우스를 오버해서 배경색을 줬다면 
+       border 색상도 배경색으로 같이 줘야함
+       border를 빼면 넓이와 높이가 변경됨 
+       ----> border있던 스타일은 오버해도 border 유지
+
+       border의 두께, 선스타일이 동일하고 색상만 변경하면
+       border-color로 색상만 변경 */
+}
+
+footer {
+    margin: 500px 0 0 0;
 }
