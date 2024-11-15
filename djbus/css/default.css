@@ -1,0 +1,26 @@
+/* 태그별로 브라우저가 주는 기본스타일을 삭제 */
+ul, li {
+    list-style: none; /* li 앞에 동그라미 삭제 */
+}
+a {
+    color: inherit; /* 브라우저가 지정해준 글자색 적용 X */
+    text-decoration: none; /* 밑줄 삭제 */
+}
+/*  *(별) 와일드 카드라고 해서 모든 태그를 지칭 */
+* {
+    margin: 0;
+    padding: 0;/* 여백삭제 */
+    box-sizing: border-box; 
+    /* width/height를 늘리는 속성이 있는데 이를 적용X
+       - width와 height를 준 경우 그 값을 유지하는 값 */
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit; /* 브라우저가 주는 글자크기 적용X */
+    font-weight: inherit;
+}
+strong {
+    font-weight: inherit;
+}
+address {
+    font-style: normal; /* 글자가 기우는 스타일 삭제 */
+}
