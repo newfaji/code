@@ -23,3 +23,54 @@ body {
        wrapper에서 지정한 width에 좌우여백 20px씩 준 값
        1260 + 40 = 1300 */
 }
+
+header {
+    height: 100px;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    margin: 28px 0 0 0;
+}
+header .gnb ul {
+    display: flex;
+}
+header .gnb ul li a {
+    display: block;
+    padding: 38px 23px 31px 23px;
+    color: #1D1D1D;
+    font-size: 22px;
+    letter-spacing: -0.05em;
+    position: relative; /* after 정렬의 기준 */
+}
+header .gnb ul li a:hover { /* a에게 마우스를 올렸을때 */
+    color: #255698;
+    font-weight: 800;
+}
+header .gnb ul li a:hover::after { /* a에게 마우스를 올렸을때 가상선택자 */
+    content: "";
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 20px;
+    bottom: 0;
+    width: calc(100% - 40px);
+    height: 3px;
+    background-color: #255698;
+}
+
+.visual {
+    height: 800px;
+    background: url(../images/visual_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+}
+.visual strong {
+    padding: 291px 0 5px 0;
+    display: block;
+}
+.visual h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
