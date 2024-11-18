@@ -269,6 +269,12 @@ header .gnb ul li a:hover::after { /* a에게 마우스를 올렸을때 가상�
     font-size: 0;
     line-height: 0;
 }
+.pr .video .list ul li a .photo img {
+    transition: 0.5s; /* 0.5초 동안 부드럽게 처리해 */
+}
+.pr .video .list ul li a:hover .photo img {
+    transform: scale3d(1.2, 1.2, 1); /* 가로세로 1.2배 */
+}
 .pr .video .list ul li a h3 {
     font-size: 20px;
     color: #1D1D1D;
