@@ -28,4 +28,5 @@ button {
     font-size: inherit;
     color: inherit;
     line-height: inherit;
+    cursor: pointer; /* 마우스를 오버했을때 손바닥 모양 */
 }
