@@ -98,3 +98,299 @@ header .tnb .global button::before {
     line-height: 1.1;
     padding: 638px 0 11px 0;
 }
+
+.biz {
+    margin: 168px 0 0 0;
+}
+.biz .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* flex로 정렬된 tit하고 list의 높이가 동일하게 설정됨
+       각자 콘텐츠의 높이대로만 높이가 잡히로도록 설정하기 위해서
+       tit에  sticky  적용하기 위해서 */
+}
+.biz .tit {
+    position: sticky;
+    /* 감싸고 있는 wrapper 안에서 고정 
+       주의사항!!!!!!!!!!!!! 감싸는 요소중에서 단 1개라도 overflow:hidden;이 적용되어 있으면
+       적용되지 않음 ----- 그래서 실제로는 이렇게 코딩 못함!!! 
+       #wrap에는 무조건 overflow:hidden; 들어가야 하므로.... */
+    top: 20px; /* 고정될때 위에서 떨어지는 값 */
+}
+.biz .tit strong {
+    color: #0A55A6;
+}
+.biz .tit h2 {
+    font-family: 'Gmarket Sans';
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 6px 0 14px 0;
+    color: #1d1d1d;
+}
+.biz .list {
+    width: 664px;
+    padding-bottom: 61px; /* list가 transform으로 이동한 만큼 */
+}
+.biz .list ul {
+    display: flex;
+    flex-wrap: wrap; /* 여러줄 허용 */
+    gap: 24px;
+}
+.biz .list ul li {
+    width: 320px;
+}
+.biz .list ul li:nth-child(odd) {
+    transform: translateY(61px);
+}
+.biz .list ul li:nth-child(even) {
+    transform: translateY(-20px);
+}
+.biz .list ul li a {
+    display: flex;
+    align-items: flex-end;
+    /* a안에 photo, inner가 있는데 photo는 absolute를 줘서
+    flex의 영향을 안받음. 
+    inner를 a안에서 하단 정렬로 배치함 */
+    position: relative; /* photo 정렬의 기준 */
+    height: 404px;
+    color: rgba(255,255,255,0.8);
+    border-radius: 20px;
+    overflow: hidden; /* 영역 밖에 나오는 요소 숨김 */
+}
+.biz .list ul li a .photo {
+    position: absolute; /* a를 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    z-index: -1;
+    /* position이 있는 photo와 position이 없는 inner가 
+      나란히 존재하는 경우 position이 있는 photo가 위에 올라감
+      무조건 아래로 배치되게 하는 값  */
+    width: 100%;
+    height: 100%;
+}
+.biz .list ul li a .inner {
+    padding: 0 34px 40px 34px;
+}
+.biz .list ul li a h3 {
+    font-family: 'Gmarket Sans';
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+}
+.biz .list ul li a p {
+    margin: 11px 0 34px 0;
+    display: none; /* 숨김 */
+}
+.biz .list ul li a span {
+    display: none; /* 숨김 */
+    font-size: 15px;
+    position: relative; /* after 정렬의 기준 */
+    padding-right: 24px; /* 오른쪽에 아이콘 들어갈 자리 */
+}
+.biz .list ul li a span::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.9463 11.9995L8.87301 7.92652C8.73468 7.78802 8.66385 7.61394 8.66051 7.40427C8.65735 7.19477 8.72818 7.01752 8.87301 6.87252C9.01801 6.72769 9.19368 6.65527 9.40001 6.65527C9.60634 6.65527 9.78201 6.72769 9.92701 6.87252L14.4213 11.3668C14.5148 11.4604 14.5808 11.5592 14.6193 11.663C14.6578 11.7669 14.677 11.879 14.677 11.9995C14.677 12.12 14.6578 12.2322 14.6193 12.336C14.5808 12.4399 14.5148 12.5386 14.4213 12.6323L9.92701 17.1265C9.78851 17.2649 9.61443 17.3357 9.40476 17.339C9.19526 17.3422 9.01801 17.2714 8.87301 17.1265C8.72818 16.9815 8.65576 16.8059 8.65576 16.5995C8.65576 16.3932 8.72818 16.2175 8.87301 16.0725L12.9463 11.9995Z' fill='white' fill-opacity='0.8'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+/* 오버했을때 */
+.biz .list ul li a .photo::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0A55A6;
+    opacity: 0.9;
+    display: none;
+}
+.biz .list ul li a:hover .photo::before {
+    display: block;
+}
+.biz .list ul li a:hover p {
+    display: block;
+    /* display:none로 안보이게 한 요소는 display에 다른 속성
+    아무거나 줘도 나타나게됨. 만만한게 block이라 block줌 */
+}
+.biz .list ul li a:hover span {
+    display: inline-block;
+}
+
+.news {
+    background-color: #E0E3E8;
+    margin: 146px 0 0 0;
+    padding: 118px 0 128px 0;
+}
+.news .wrapper {
+    position: relative; /* more 정렬의 기준 */
+}
+.news .tit strong {
+    color: #0A55A6;
+}
+.news .tit h2 {
+    font-family: 'Gmarket Sans';
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1d1d1d;
+    margin: 9px 0 0 0;
+}
+.news .list {
+    margin: 37px 0 0 0;
+}
+.news .list ul li {
+    margin: 0 0 10px 0;
+}
+.news .list ul li a {
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 41px 22px 41px;
+    background-color: #fff;
+}
+.news .list ul li a h3 {
+    font-family: 'Gmarket Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #1d1d1d;
+}
+/* 오버했을때 */
+.news .list ul li a:hover {
+    background-color: #0A55A6;
+    color: #fff;
+}
+.news .list ul li a:hover h3 {
+    color: #fff;
+}
+.news .more {
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 8px;
+    top: 51px;
+}
+.news .more a {
+    display: block;
+    padding: 5px 24px 5px 5px;
+
+    position: relative; /* after 정렬의 기준 */
+}
+.news .more a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 20px; /* 아이콘의 크기 */
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.37467 10.6247H5.20801C5.03092 10.6247 4.88252 10.5647 4.7628 10.4449C4.64294 10.325 4.58301 10.1765 4.58301 9.99947C4.58301 9.82224 4.64294 9.67384 4.7628 9.55426C4.88252 9.43454 5.03092 9.37467 5.20801 9.37467H9.37467V5.20801C9.37467 5.03092 9.4346 4.88252 9.55447 4.7628C9.67433 4.64294 9.8228 4.58301 9.99988 4.58301C10.1771 4.58301 10.3255 4.64294 10.4451 4.7628C10.5648 4.88252 10.6247 5.03092 10.6247 5.20801V9.37467H14.7913C14.9684 9.37467 15.1168 9.4346 15.2365 9.55447C15.3564 9.67433 15.4163 9.8228 15.4163 9.99988C15.4163 10.1771 15.3564 10.3255 15.2365 10.4451C15.1168 10.5648 14.9684 10.6247 14.7913 10.6247H10.6247V14.7913C10.6247 14.9684 10.5647 15.1168 10.4449 15.2365C10.325 15.3564 10.1765 15.4163 9.99947 15.4163C9.82224 15.4163 9.67384 15.3564 9.55426 15.2365C9.43454 15.1168 9.37467 14.9684 9.37467 14.7913V10.6247Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    transition: transform 1s; /* 변경되는 값을 천천히 변경 */
+}
+.news .more a:hover {
+    color: #0A55A6;
+}
+.news .more a:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.37467 10.6247H5.20801C5.03092 10.6247 4.88252 10.5647 4.7628 10.4449C4.64294 10.325 4.58301 10.1765 4.58301 9.99947C4.58301 9.82224 4.64294 9.67384 4.7628 9.55426C4.88252 9.43454 5.03092 9.37467 5.20801 9.37467H9.37467V5.20801C9.37467 5.03092 9.4346 4.88252 9.55447 4.7628C9.67433 4.64294 9.8228 4.58301 9.99988 4.58301C10.1771 4.58301 10.3255 4.64294 10.4451 4.7628C10.5648 4.88252 10.6247 5.03092 10.6247 5.20801V9.37467H14.7913C14.9684 9.37467 15.1168 9.4346 15.2365 9.55447C15.3564 9.67433 15.4163 9.8228 15.4163 9.99988C15.4163 10.1771 15.3564 10.3255 15.2365 10.4451C15.1168 10.5648 14.9684 10.6247 14.7913 10.6247H10.6247V14.7913C10.6247 14.9684 10.5647 15.1168 10.4449 15.2365C10.325 15.3564 10.1765 15.4163 9.99947 15.4163C9.82224 15.4163 9.67384 15.3564 9.55426 15.2365C9.43454 15.1168 9.37467 14.9684 9.37467 14.7913V10.6247Z' fill='%230A55A6'/%3E%3C/svg%3E%0A");
+    transform: rotate(360deg);
+}
+
+.webzine {
+    margin: 162px 0 0 0;
+}
+.webzine .tit strong {
+    color: #0A55A6;
+}
+.webzine .tit h2 {
+    font-family: 'Gmarket Sans';
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 6px 0 0 0;
+    color: #1d1d1d;
+}
+.webzine .list {
+    margin: 35px 0 0 0;
+}
+.webzine .list ul {
+    display: flex;
+    gap: 24px;
+    /*
+        li의 넓이 (404) * li의 갯수 (5)  = 2020
+        li 사이의 여백 (24) * li의 갯수 -1 (4) = 96
+        2020 + 96 = 2116
+
+        * 넓이가 wrapper보다 넓을때
+        flex로 정렬된 li들은 무조건 한줄로 들어가려고 
+        li에 넓이를 줘도 찌그러짐.. (사이즈가 변경됨)
+        넓이를 유지하려면 넓이를 계산해서 ul한테 줘야함
+    */
+    width: 2116px;
+}
+.webzine .list ul li {
+    width: 404px;
+}
+.webzine .list ul li a {
+    display: block;
+}
+.webzine .list ul li a .photo {
+    height: 248px;
+    border-radius: 20px;
+    overflow: hidden; /* border-radius가 적용이 안되서 */
+    position: relative; /* category정렬의 기준 */
+}
+.webzine .list ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s; 
+    /* 오버하거나 class가 추가되거나 변경사항이 생겼을때 
+       그 수정사항을 천천히 실행하라 */
+}
+.webzine .list ul li a:hover .photo img {
+    transform: scale3d(1.2, 1.2, 1);
+}
+.webzine .list ul li a .photo .category {
+    position: absolute; /* photo를 기준으로 정렬 */
+    bottom: 7px;
+    left: 9px;
+    background-color: #0A55A6;
+    color: #fff;
+    padding: 5px 17px 3px 17px;
+    border-radius: 25px;
+}
+.webzine .list ul li a:hover .photo .category {
+    background-color: #3997D7;
+}
+.webzine .list ul li a .category {
+    color: #0A55A6;
+    display: block;
+    margin: 24px 0 0 0;
+}
+.webzine .list ul li a h3 {
+    font-family: 'Gmarket Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 9px 0 15px 0;
+    color: #1d1d1d;
+
+    line-height: 1.1;
+    height: 2.2em;
+    overflow: hidden;
+}
+.webzine .list ul li a p {
+    /* 2줄로 제한 */
+    line-height: 1.4;
+    height: 4.2em; /* 행간 * 줄수 (단위는 em) */
+    overflow: hidden;
+}
