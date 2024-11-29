@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>배경테스트</title>
+</head>
+<body>
+    <div id="wrap">
+        <div class="fit">
+            <div class="wrapper">
+                <h2>이미지의 크기 조절</h2>
+                <p>이미지 태그로 코딩한 이미지는 넓이나 높이 하나만 지정해주면 
+                    비율에 맞게 리사이즈됨 
+                    (이미지 크기조절할때 넓이/높이 동시에 주면 안됨)<br>
+                   이미지의 크기를 px 또는 % 등으로 조정할 수 있는데, 
+                   %는 이미지를 감싸는 요소의 넓이를 기준으로 계산함 
+                   (원래 이미지크기와 상관없음) </p>
+                <div class="list1">
+                    <ul>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg1.jpg" alt=""></div>
+                                <h3>이미지 이미지</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg2.jpg" alt=""></div>
+                                <h3>글자 글자</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--list1-->
+                <h2>object fit - cover</h2>
+                <p>메인페이지 최근게시물에 이미지가 있는 경우, 담당자가 어떤 이미지를 
+                    업로드하더라도 디자인한 영역에 이미지를 찌러지지 않게 구현하는게 중요함<br>
+                   object-fit: cover는 영역에 이미지를 위아래 가운데, 좌우로 가운데로 정렬</p>
+                <div class="list2">
+                    <ul>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg1.jpg" alt=""></div>
+                                <h3>이미지 이미지</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg2.jpg" alt=""></div>
+                                <h3>글자 글자</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--list2-->
+                <h2>object fit - contain</h2>
+                <p>메인페이지 최근게시물에 이미지가 있는 경우, 담당자가 어떤 이미지를 
+                    업로드하더라도 디자인한 영역에 이미지를 찌러지지 않게 구현하는게 중요함<br>
+                   object-fit: contain 정해진 영역안에 이미지를 짤리지 않게 모두 표시, 단 여백이 많이 생김</p>
+                <div class="list3">
+                    <ul>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg1.jpg" alt=""></div>
+                                <h3>이미지 이미지</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg2.jpg" alt=""></div>
+                                <h3>글자 글자</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--list3-->
+            </div>
+        </div><!--fit-->
+
+        <div class="bg">
+            <div class="wrapper">
+                <h2>background-size:cover</h2>
+                <p>배경을 주는 요소에 빈 공간없이 배경이미지를 꽉 채우는 방식, 
+                    단 이미지가 짤릴 수 있음</p>
+                <div class="list case1">
+                    <ul>
+                        <li class="list1"><a href="#n">글자 글자</a></li>
+                        <li class="list2"><a href="#n">글자 글자</a></li>
+                    </ul>
+                </div><!--list-->
+                <h2>background-size:contain</h2>
+                <p>배경을 주는 요소에 배경이미지를 짤리지 않게 모두 표시하는 방식,
+                    배경의 일부에는 배경이미지가 들어가지 않음 (빈곳이 발생)</p>
+                <div class="list case2">
+                    <ul>
+                        <li class="list1"><a href="#n">글자 글자</a></li>
+                        <li class="list2"><a href="#n">글자 글자</a></li>
+                    </ul>
+                </div><!--list-->
+                <h2>background-size: 직접 입력</h2>
+                <p>배경의 크기를 px또는 %로 직접 입력할 수도 있습니다. 
+                    이때는 img 태그와 동일하게 넓이/높이 하나만 입력하면
+                    비율에 맞게 사이즈가 줄어듬 (절대 동시에 주면 안됨)<br>
+                    background-size: 100px; - 넓이가 조절됨 (background-size: 100px auto; 이게 정확한 표현)<br>
+                    background-size: auto 100px; - 높이가 100px로 조정됨<br>
+                    만약 단위를 %로 주면 배경을 준 요소의 넓이/높이를 기준으로 퍼센트 계산함
+                    (배경 이미지 사이즈를 상관없음)</p>
+                <div class="list case3">
+                    <ul>
+                        <li class="list1"><a href="#n">글자 글자</a></li>
+                        <li class="list2"><a href="#n">글자 글자</a></li>
+                    </ul>
+                </div><!--list-->
+                <div class="list case4">
+                    <ul>
+                        <li class="list1"><a href="#n">글자 글자</a></li>
+                        <li class="list2"><a href="#n">글자 글자</a></li>
+                    </ul>
+                </div><!--list-->
+            </div><!--wrapper-->
+        </div><!--bg-->
+        <div class="over">
+            <div class="wrapper">
+                <h2>img태그로 배경을 코딩한 경우</h2>
+                <p>홈페이지에서 게시물의 이미지를 가져올때는 꼭 img태그로만 가져올 수 있음</p>
+                <div class="list case1">
+                    <ul>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg3.png" alt=""></div>
+                                <h3>파도</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#n">
+                                <div class="photo"><img src="images/bg4.png" alt=""></div>
+                                <h3>저녁노을</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--wrapper-->
+        </div><!--over-->
+        <div class="bg_over">
+            <div class="wrapper">
+                <h2>backgroud 마우스 오버 시 확대</h2>
+                <p>배경을 확대하려면 background-size로 조절해야함</p>
+                <div class="list">
+                    <ul>
+                        <li class="bg1">
+                            <a href="#n">
+                                <h3>파도</h3>
+                            </a>
+                        </li>
+                        <li class="bg2">
+                            <a href="#n">
+                                <h3>저녁노을</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--wrapper-->
+        </div><!--bg_over-->
+    </div><!--wrap-->
+</body>
+</html>
