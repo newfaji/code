@@ -263,6 +263,21 @@ header .tnb .global button::before {
     font-weight: 500;
     line-height: 1.1;
     color: #1d1d1d;
+
+    width: calc(100% - 150px);
+    /* a안에는 제목과 날짜가 존재하는데 
+       날짜는 길이 변하지 않음 
+       그래서 날짜가 들어갈 넓이와 제목 사이의 여백을 더해서
+       100% (a의 넓이 기준) 에서 빼줌
+       h3가 가질 수 있는 최대 넓이 
+       제목은 길게 작성될 수도 있기때문에 너무 길면 문자를 잘라버려야함 
+        
+       제목을 1줄로 제한할때 조건 
+       1. 넓이가 명확해야 함 (block요소거나)
+    */
+    white-space: nowrap; /* 줄바꿈 금지 */
+    overflow: hidden; /* 넘치는 요소 숨기기*/
+    text-overflow: ellipsis; /* 짤린 글자는 뒤에 ... 추가 */
 }
 /* 오버했을때 */
 .news .list ul li a:hover {
@@ -306,6 +321,7 @@ header .tnb .global button::before {
 
 .webzine {
     margin: 162px 0 0 0;
+    position: relative; /* more 정렬의 기준 */
 }
 .webzine .tit strong {
     color: #0A55A6;
@@ -320,6 +336,7 @@ header .tnb .global button::before {
 }
 .webzine .list {
     margin: 35px 0 0 0;
+    overflow: hidden;
 }
 .webzine .list ul {
     display: flex;
@@ -335,6 +352,11 @@ header .tnb .global button::before {
         넓이를 유지하려면 넓이를 계산해서 ul한테 줘야함
     */
     width: 2116px;
+    /* absolute는 공간을 차지하지 않고 순서를 역행
+       relative는 공간을 차지 */
+    position: relative;
+    left: 50%; /* 감싸는 영역 넓이의 50% */
+    transform: translateX(-50%); /* ul 자기 자신 넓이의 50% */
 }
 .webzine .list ul li {
     width: 404px;
@@ -381,7 +403,7 @@ header .tnb .global button::before {
     font-size: 20px;
     font-weight: 500;
     line-height: 1.1;
-    margin: 9px 0 15px 0;
+    margin: 25px 0 15px 0;
     color: #1d1d1d;
 
     line-height: 1.1;
@@ -393,4 +415,134 @@ header .tnb .global button::before {
     line-height: 1.4;
     height: 4.2em; /* 행간 * 줄수 (단위는 em) */
     overflow: hidden;
+}
+.webzine .more {
+    position: absolute; /* webzine을 기준으로 정렬 */
+    right: calc(50% - 630px);
+    top: 53px;
+    /* wrapper를 기준으로 정렬해서 layout의 오른쪽에
+       배치하면 좋지만 코딩구조상 그게 불가할 경우
+       가운데를 기준으로 해서 layout의 넓이의 절반을 
+       빼거나 더해서 오른쪽/왼쪽에 배치 */
+}
+.webzine .more a {
+    display: block;
+    padding: 5px 33px 5px 5px;
+
+    position: relative; /* after 정렬의 기준 */
+}
+.webzine .more a::after {
+    content: "";
+    position: absolute;
+    right: 9;
+    top: 6px;
+    width: 20px; /* 아이콘의 크기 */
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.37467 10.6247H5.20801C5.03092 10.6247 4.88252 10.5647 4.7628 10.4449C4.64294 10.325 4.58301 10.1765 4.58301 9.99947C4.58301 9.82224 4.64294 9.67384 4.7628 9.55426C4.88252 9.43454 5.03092 9.37467 5.20801 9.37467H9.37467V5.20801C9.37467 5.03092 9.4346 4.88252 9.55447 4.7628C9.67433 4.64294 9.8228 4.58301 9.99988 4.58301C10.1771 4.58301 10.3255 4.64294 10.4451 4.7628C10.5648 4.88252 10.6247 5.03092 10.6247 5.20801V9.37467H14.7913C14.9684 9.37467 15.1168 9.4346 15.2365 9.55447C15.3564 9.67433 15.4163 9.8228 15.4163 9.99988C15.4163 10.1771 15.3564 10.3255 15.2365 10.4451C15.1168 10.5648 14.9684 10.6247 14.7913 10.6247H10.6247V14.7913C10.6247 14.9684 10.5647 15.1168 10.4449 15.2365C10.325 15.3564 10.1765 15.4163 9.99947 15.4163C9.82224 15.4163 9.67384 15.3564 9.55426 15.2365C9.43454 15.1168 9.37467 14.9684 9.37467 14.7913V10.6247Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    transition: transform 1s; /* 변경되는 값을 천천히 변경 */
+}
+.webzine .more a:hover {
+    color: #0A55A6;
+}
+.webzine .more a:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.37467 10.6247H5.20801C5.03092 10.6247 4.88252 10.5647 4.7628 10.4449C4.64294 10.325 4.58301 10.1765 4.58301 9.99947C4.58301 9.82224 4.64294 9.67384 4.7628 9.55426C4.88252 9.43454 5.03092 9.37467 5.20801 9.37467H9.37467V5.20801C9.37467 5.03092 9.4346 4.88252 9.55447 4.7628C9.67433 4.64294 9.8228 4.58301 9.99988 4.58301C10.1771 4.58301 10.3255 4.64294 10.4451 4.7628C10.5648 4.88252 10.6247 5.03092 10.6247 5.20801V9.37467H14.7913C14.9684 9.37467 15.1168 9.4346 15.2365 9.55447C15.3564 9.67433 15.4163 9.8228 15.4163 9.99988C15.4163 10.1771 15.3564 10.3255 15.2365 10.4451C15.1168 10.5648 14.9684 10.6247 14.7913 10.6247H10.6247V14.7913C10.6247 14.9684 10.5647 15.1168 10.4449 15.2365C10.325 15.3564 10.1765 15.4163 9.99947 15.4163C9.82224 15.4163 9.67384 15.3564 9.55426 15.2365C9.43454 15.1168 9.37467 14.9684 9.37467 14.7913V10.6247Z' fill='%230A55A6'/%3E%3C/svg%3E%0A");
+    transform: rotate(360deg);
+}
+
+.banner {
+    margin: 126px 0 0 0;
+    padding: 123px 0 138px 0;
+    background-color: #E0E3E8;
+}
+.banner .tit strong {
+    color: #0A55A6;
+}
+.banner .tit h2 {
+    font-family: 'Gmarket Sans';
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 6px 0 0 0;
+    color: #1d1d1d;
+}
+.banner .list {
+    margin: 46px 0 0 0;
+}
+.banner .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.banner .list ul li {
+    width: 404px;
+}
+.banner .list ul li a {
+    display: block;
+    height: 92px;
+    background-color: #fff;
+    padding: 37px 0 0 36px;
+
+    font-family: 'Gmarket Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #1d1d1d;
+
+    position: relative; /* after 정렬의 기준 */
+}
+.banner .list ul li a::after {
+    content: "";
+    position: absolute; /* a를 기준으로 정렬 */
+    right: 39px;
+    top: 27px;
+    width: 38px; /* 아이콘 사이즈 */
+    height: 38px;
+    background-image: url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.7351 21.9999L16.2674 14.5328C16.0138 14.2789 15.884 13.9597 15.8778 13.5753C15.872 13.1912 16.0019 12.8663 16.2674 12.6004C16.5333 12.3349 16.8553 12.2021 17.2336 12.2021C17.6119 12.2021 17.9339 12.3349 18.1998 12.6004L26.4392 20.8399C26.6106 21.0116 26.7316 21.1927 26.8022 21.383C26.8728 21.5734 26.9081 21.779 26.9081 21.9999C26.9081 22.2209 26.8728 22.4265 26.8022 22.6169C26.7316 22.8072 26.6106 22.9883 26.4392 23.16L18.1998 31.3994C17.9458 31.6531 17.6267 31.7829 17.2423 31.789C16.8582 31.7948 16.5333 31.665 16.2674 31.3994C16.0019 31.1336 15.8691 30.8116 15.8691 30.4333C15.8691 30.055 16.0019 29.7329 16.2674 29.4671L23.7351 21.9999Z' fill='%233D3D3D' fill-opacity='0.8'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.banner .list ul li a:hover {
+    background-color: #0A55A6;
+    color: #fff;
+}
+.banner .list ul li a:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23.7351 21.9999L16.2674 14.5328C16.0138 14.2789 15.884 13.9597 15.8778 13.5753C15.872 13.1912 16.0019 12.8663 16.2674 12.6004C16.5333 12.3349 16.8553 12.2021 17.2336 12.2021C17.6119 12.2021 17.9339 12.3349 18.1998 12.6004L26.4392 20.8399C26.6106 21.0116 26.7316 21.1927 26.8022 21.383C26.8728 21.5734 26.9081 21.779 26.9081 21.9999C26.9081 22.2209 26.8728 22.4265 26.8022 22.6169C26.7316 22.8072 26.6106 22.9883 26.4392 23.16L18.1998 31.3994C17.9458 31.6531 17.6267 31.7829 17.2423 31.789C16.8582 31.7948 16.5333 31.665 16.2674 31.3994C16.0019 31.1336 15.8691 30.8116 15.8691 30.4333C15.8691 30.055 16.0019 29.7329 16.2674 29.4671L23.7351 21.9999Z' fill='%23fff' fill-opacity='0.8'/%3E%3C/svg%3E%0A");
+}
+
+footer {
+    padding: 61px 0 77px 0;
+    background-color: #303744;
+    color: rgba(255,255,255,0.8);
+}
+footer .f_nav ul {
+    display: flex;
+    gap: 40px;
+}
+footer .f_nav ul li {
+    position: relative; /* after 정렬의 기준 */
+}
+footer .f_nav ul li::after {
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: 9px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.3);
+}
+/* 마지막 li의 after를 숨김 */
+footer .f_nav ul li:last-child::after {
+    display: none;
+}
+footer .f_info {
+    margin: 27px 0 23px 0;
+    display: flex;
+    gap: 21px;
+}
+footer .copyright {
+    color: rgba(255,255,255,0.6);
 }
