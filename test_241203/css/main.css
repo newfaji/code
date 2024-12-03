@@ -1,0 +1,235 @@
+@import url(default.css); /* default.css를 이 문서에 복사해서 넣은 것처럼 불러오기 */
+@import url(font.css);
+@import url(common.css);
+
+.introduce .photo {
+    margin: 94px 0 0 0;
+    border-radius: 20px;
+    overflow: hidden; /* 삐져나간 이미지 숨김 */
+}
+/* 이미지가 안짤리고 모두 보임 - 넓이/높이가 계속 바뀜 */
+.introduce .photo.case1 {
+    /* 이미지 하단에 행간이 적용되서 여백이 생기는데 이를 삭제 
+       img사이즈와 photo 사이즈를 동일하게 */
+    font-size: 0; 
+    line-height: 0;
+}
+.introduce .photo.case1 img {
+    width: 100%; /* img를 감싸는 photo의 넓이에 100% */
+}
+.introduce .photo.case2 {
+    /* 넓이는 변경되지만 높이가 고정 - 이미지는 짤려도됨 
+        1. photo에 넓이와 높이를 고정 - 넓이는 이미 block태그라서 100%
+        2. 이미지에 width/height 100%, object-fit:cover 줌
+    */
+    height: 372px;
+}
+.introduce .photo.case2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.introduce .group {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 92px 0;
+}
+.introduce .group h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1D1D1D;
+    line-height: 1.2;
+}
+.introduce .group h2 span {
+    display: block; /* 줄바꿈용 */
+}
+.introduce .group p {
+    width: 832px;
+}
+.introduce .group p strong {
+    font-weight: 800;
+    color: #3d3d3d;
+}
+
+@media screen and (max-width:640px){ 
+                .introduce .photo {
+                    margin: 36px 0 0 0;
+                    border-radius: 10px;
+                }
+                .introduce .photo.case2 {
+                    height: 184px;
+                }
+                .introduce .group {
+                    display: block; 
+                    /* flex 해제 - display에 다른 값을 선언해줘야함 - 제일 만만한 block */
+                    /* justify-content: space-between; 
+                    -- 이 값은 flex일때만 적용되기 때문에 나둬도 됨 */
+                    margin: 30px 0 43px 0;
+                }
+                .introduce .group h2 {
+                    font-size: 20px;
+                    margin: 0 0 14px 0;
+                }
+                .introduce .group h2 span {
+                    display: inline; /* 줄바꿈용 */
+                }
+                .introduce .group h2 br {
+                    display: none; /* 줄바꿈 삭제 */
+                }
+                .introduce .group p {
+                    width: auto; /* 고정값을 삭제하고 원래대로 돌어가기  */
+                }
+                .introduce .group p strong {
+                    font-weight: 400;
+                    color: #1d1d1d;
+                }
+}/*media*/
+
+.news {
+    margin: 150px 0; /* 값을 두개를 쓰면 앞은 위아래, 뒤는 좌우값 */
+}
+.news h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #1D1D1D;
+    line-height: 1.2;
+    margin: 0 0 9px 0;
+}
+.news .news_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.news .news_wrap .notice {
+    width: 618px;
+    background-color: #F4F7FD;
+    padding: 38px 40px 0 40px;
+}
+.news .news_wrap .notice h3 {
+    display: none;
+}
+.news .news_wrap .notice ul li {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.news .news_wrap .notice ul li:last-child {
+    border-bottom: 0; /* none 가능 */
+}
+.news .news_wrap .notice ul li a {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 16px 0 20px 0;
+}
+.news .news_wrap .notice ul li a strong {
+    color: #1D1D1D;
+    width: calc(100% - 122px);
+
+    /* 1줄제한 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.news .news_wrap .notice ul li a:hover strong {
+    font-weight: 800;
+    text-decoration: underline;
+}
+.news .news_wrap .notice ul li a span {
+    color: #666;
+    font-size: 15px;
+}
+.news .news_wrap .gallery {
+    width: 594px;
+}
+.news .news_wrap .gallery h3 {
+    display: none;
+}
+.news .news_wrap .gallery ul {
+    display: flex;
+    flex-wrap: wrap; /* 여러줄 허용 */
+    gap: 33px 24px; /* 위아래    좌우 여백 */
+}
+.news .news_wrap .gallery ul li {
+    width: calc(50% - 12px);
+    /* ul의 넓이를 기준으로 해서 
+       좌우 2개니까 50% - (여백의 총합 / 한줄에 들어가는 li갯수) */
+}
+.news .news_wrap .gallery ul li a {
+    display: block;
+}
+.news .news_wrap .gallery ul li a .photo {
+    height: 165px;
+    overflow: hidden; 
+    /* 마우스오버시 이미지 확대 할때 photo 영역 밖에 나간것 숨기기 */
+}
+.news .news_wrap .gallery ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+.news .news_wrap .gallery ul li a:hover .photo img {
+    transform: scale3d(1.2, 1.2, 1);
+}
+.news .news_wrap .gallery ul li a strong {
+    color: #1D1D1D;
+    margin: 11px 0 0 0;
+    display: block; /* margin적용되라고 */
+
+    /*
+        1줄 제한
+        1. 넓이가 있어야함 (block태그이거나)
+        2. 제목을 무조건 한줄로 나타나게 white-space:nowrap
+        3. 글자가 영역을 넘치면 잘라버림 overflow:hidden;
+        4. 짤린 글자는 뒤에 ... 추가 text-overflow:ellipsis;
+    */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media screen and (max-width:640px){ 
+                .news {
+                    margin: 75px 0; /* 값을 두개를 쓰면 앞은 위아래, 뒤는 좌우값 */
+                }
+                .news h2 {
+                    font-size: 30px;
+                    margin: 0 0 14px 0;
+                }
+                .news .news_wrap {
+                    display: block; /* flex해제 */
+                }
+                .news .news_wrap .notice {
+                    width: auto;
+                    padding: 26px 20px 23px 20px; /* 하단여백추가 */
+                }
+                .news .news_wrap .notice ul li a {
+                    padding: 8px 0 7px 0;
+                }
+                .news .news_wrap .notice ul li a strong {
+                    width: calc(100% - 106px);
+                }
+                .news .news_wrap .notice ul li a span {
+                    font-size: 13px;
+                }
+                .news .news_wrap .gallery {
+                    width: auto;
+                    margin: 28px 0 0 0;
+                }
+                .news .news_wrap .gallery ul {
+                    gap: 14px 16px; /* 위아래    좌우 여백 */
+                }
+                .news .news_wrap .gallery ul li {
+                    width: calc(50% - 8px);
+                }
+                .news .news_wrap .gallery ul li a .photo {
+                    height: 100px;
+                }
+                .news .news_wrap .gallery ul li a strong {
+                    margin: 6px 0 0 0;
+                
+                    /*
+                        1줄 제한 -> 무제한
+                    */
+                    white-space: normal;
+                    overflow: visible;
+                }
+}/*media*/
