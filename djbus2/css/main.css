@@ -1,0 +1,187 @@
+@import url(default.css); /* default.css를 이 문서에 복사해서 넣은 것처럼 불러오기 */
+@import url(font.css);
+@import url(common.css);
+
+header {
+    height: 100px;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    margin: 28px 0 0 0;
+}
+header .gnb .gnb_open, header .gnb .gnb_close {
+    display: none; /* 모바일에서만 나타남 */
+}
+header .gnb .gnb_wrap ul {
+    display: flex;
+}
+header .gnb .gnb_wrap ul li a {
+    color: #1D1D1D;
+    font-size: 22px;
+    display: block;
+    line-height: 100px;
+    padding: 0 21px;
+}
+header .gnb .gnb_wrap ul li a span {
+    position:relative; /* after 정렬의 기준 */
+}
+header .gnb .gnb_wrap ul li a span::after {
+    content: "";
+    position: absolute; /* span태그를 기준으로 정렬 */
+    left: 0;
+    bottom: -36px;
+    width: 100%;
+    height: 2px;
+    background-color: #255698;
+    display: none; /* 숨김 */
+}
+header .gnb .gnb_wrap ul li a:hover {
+    color: #255698;
+    font-weight: 800;
+}
+header .gnb .gnb_wrap ul li a:hover span::after {
+    display: block; /* none를 해제하기 */
+}
+@media screen and (max-width:640px){ 
+            header {
+                height: 50px;
+                position: relative; /* gnb_open 정렬의 기준 */
+            }
+            header .logo {
+                margin: 13px 0 0 0;
+            }
+            header .logo a img {
+                width: 89px;  
+                /* 모바일에서 이미지의 사이즈가 변경될때 넓이/높이 하나만주면
+                   나머지값은 비율에 맞게 들어감  */
+            }
+            header .gnb .gnb_open {
+                display: block; /* 모바일에서만 나타남 */
+                position: absolute; /* header를 기준으로 정렬 */
+                right: 0;
+                top: 0;
+                width: 60px;
+                height: 50px;
+                font-size: 0; /* 기존 글자 삭제 */
+                line-height: 0;
+            }
+            header .gnb .gnb_open::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%; /* 감싸는 요소가 사이즈가 지정되어 있을때 */
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19.068 13.973'%3E%3Cpath id='menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M121.059-706.027a.98.98,0,0,1-.755-.335,1.187,1.187,0,0,1-.3-.83,1.187,1.187,0,0,1,.3-.83.98.98,0,0,1,.755-.335h16.949a.98.98,0,0,1,.755.335,1.187,1.187,0,0,1,.3.83,1.187,1.187,0,0,1-.3.83.98.98,0,0,1-.755.335Zm0-5.822a.979.979,0,0,1-.755-.335,1.186,1.186,0,0,1-.3-.83,1.187,1.187,0,0,1,.3-.83.981.981,0,0,1,.755-.334h16.949a.981.981,0,0,1,.755.334,1.187,1.187,0,0,1,.3.83,1.186,1.186,0,0,1-.3.83.979.979,0,0,1-.755.335Zm0-5.822a.979.979,0,0,1-.755-.335,1.187,1.187,0,0,1-.3-.83,1.187,1.187,0,0,1,.3-.83.98.98,0,0,1,.755-.335h16.949a.98.98,0,0,1,.755.335,1.187,1.187,0,0,1,.3.83,1.187,1.187,0,0,1-.3.83.979.979,0,0,1-.755.335Z' transform='translate(-120 720)' fill='%23555'/%3E%3C/svg%3E%0A");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 19px;
+                /* 영역의 크기에 이미지가 꽉차지 않고 특정한 사이즈로 들어갈때 
+                    background-size: 19px; 한개만 선언하면 그게 넓이 
+                    높이는 비율에 맞게 들어감 */
+            }
+            header .gnb .gnb_wrap {
+                display: none; /* 모바일에서 숨김 */
+            }
+}/*media*/
+
+.visual {
+    height: 800px;
+    background: url(../images/visual_bg.jpg) no-repeat center center / cover;
+    color: #fff;
+}
+.visual strong {
+    padding: 291px 0 0 0;
+    display: block; /* padding을 적용하기 위해서 줌 */
+}
+.visual h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 5px 0 0 0;
+}
+@media screen and (max-width:640px){
+            .visual {
+                height: auto;
+                padding: 0 0 64px 0;
+            }
+            .visual strong {
+                padding: 145px 0 0 0;
+            }
+            .visual h2 {
+                font-size: 25px;
+            }
+}/* media */
+
+.int {
+    margin: 136px 0 0 0;
+}
+.int .txt_left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.int .txt_right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse; /* 좌우 순서 반전 */
+}
+.int .inner {
+    width: 511px;
+}
+.int strong {
+    color: #255698;
+}
+.int h2 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 8px 0 8px 0;
+    color: #1D1D1D;
+}
+.int h2 em {
+    color: #255698;
+}
+.int .sub_tit {
+    font-size: 20px;
+    margin: 0 0 14px 0;
+}
+.int .btn_wrap {
+    margin: 58px 0 0 0;
+    display: flex;
+    gap: 10px;
+}
+.int .btn_wrap a {
+    border: 1px solid #255698;
+    border-radius: 25px;
+    display: block;
+    padding: 9px 28px; /* 2개쓰면 위아래/좌우값 */
+    color: #255698;
+}
+.int .btn_wrap a.point {
+    background-color: #255698;
+    color: #fff;
+}
+.int .btn_wrap a:hover {
+    background-color: #229EA0;
+    color: #fff;
+    border-color: #229EA0;
+}
+.int .photo {
+    height: 568px;
+    border-radius: 30px;
+    overflow: hidden; /* border-radius 적용을 위해 */
+}
+.int .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer {
+    margin-top: 500px;
+}
