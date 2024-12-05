@@ -218,6 +218,358 @@ header .gnb .gnb_wrap ul li a:hover span::after {
                 }
 }/*media*/
 
-footer {
-    margin-top: 500px;
+.pr {
+    margin: 140px 0 0 0;
+    color: #fff;
+    position: relative; /* before 정렬의 기준 */
 }
+.pr::before {
+    content: "";
+    position: absolute; /* pr을 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    z-index: -1; /* 콘텐츠 아래로 배치 */
+    width: 100%;
+    height: 882px;
+    background: url(../images/pr_bg.png) no-repeat center top / cover;
+}
+.pr .news {
+    padding: 137px 0 0 0;
+}
+.pr .news .wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative; /* more 정렬의 기준 */
+}
+.pr .news .tit strong {
+    color: #66D7D1;
+}
+.pr .news .tit h2 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 8px 0 8px 0;
+}
+.pr .news .tit h2 em {
+    color: #66D7D1;
+}
+.pr .news .list {
+    width: 725px;
+}
+.pr .news .list ul li {
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.pr .news .list ul li:first-child {
+    border-top: 1px solid rgba(255,255,255,0.4);
+}
+.pr .news .list ul li a {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 23px 0;
+}
+.pr .news .list ul li a strong {
+    font-size: 20px;
+
+    /* 1줄 제한 - 넓이가 제한 */
+    width: calc(100% - 125px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pr .news .list ul li a span {
+    color: rgba(255,255,255,0.8);
+}
+.pr .news .list ul li a:hover strong {
+    font-weight: 800;
+}
+.pr .news .more {
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    left: 0;
+    top: 208px;
+}
+.pr .news .more a {
+    border: 1px solid #fff;
+    border-radius: 25px;
+    display: inline-block;
+    padding: 9px 28px; /* 2개쓰면 위아래/좌우값 */
+}
+.pr .news .more a span {
+    display: none; /* 모바일에서만 보임 */
+}
+.pr .news .more a:hover {
+    background-color: #66D7D1;
+    border-color: #66D7D1;
+    color: #255698;
+}
+
+.pr .video {
+    margin: 177px 0 0 0;
+}
+.pr .video .wrapper {
+    position: relative; /* more 정렬의 기준 */
+}
+.pr .video .tit strong {
+    color: #66D7D1;
+}
+.pr .video .tit h2 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 8px 0 0 0;
+}
+.pr .video .tit h2 em {
+    color: #66D7D1;
+}
+.pr .video .tit h2 br {
+    display: none; /* 줄바꿈 삭제 */
+}
+.pr .video .list {
+    margin: 28px 0 0 0;
+}
+.pr .video .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.pr .video .list ul li {
+    width: calc(33.33% - 16px);
+}
+.pr .video .list ul li a {
+    display: block;
+    color: #1D1D1D;
+}
+.pr .video .list ul li a .photo {
+    height: 227px;
+    border-radius: 20px;
+    border: 2px solid #255698;
+    overflow: hidden;
+}
+.pr .video .list ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+.pr .video .list ul li a strong {
+    margin: 20px 14px 0 14px;
+    display: block;
+    font-size: 20px;
+}
+.pr .video .list ul li a:hover .photo img {
+    transform: scale3d(1.2, 1.2, 1);
+}
+.pr .video .list ul li a:hover strong {
+    font-weight: 800;
+}
+.pr .video .more {
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 37px;
+}
+.pr .video .more a {
+    border: 1px solid #fff;
+    border-radius: 25px;
+    display: inline-block;
+    padding: 9px 28px; /* 2개쓰면 위아래/좌우값 */
+}
+.pr .video .more a span {
+    display: none; /* 모바일에서만 보임 */
+}
+.pr .video .more a:hover {
+    background-color: #66D7D1;
+    border-color: #66D7D1;
+    color: #255698;
+}
+@media screen and (max-width:640px){
+            .pr {
+                margin: 59px 0 0 0;
+            }
+            .pr::before {
+                display: none; /* 배경을 주는 대상이 변경 -숨김 */
+            }
+            .pr .news {
+                padding: 65px 0 65px 0;
+                background: url(../images/pr_bg.png) no-repeat center top / cover;
+            }
+            .pr .news .wrapper {
+                display: block; /* flex해제 */
+            }
+            .pr .news .tit h2 {
+                font-size: 25px;
+                margin: 6px 0 9px 0;
+            }
+            .pr .news .list {
+                width: auto; /* 고정 넓이 해제 - 원래대로 */
+                margin: 35px 0 0 0;
+            }
+            .pr .news .list ul li a {
+                padding: 12px 0 12px 0;
+            }
+            .pr .news .list ul li a strong {
+                font-size: 15px;
+            
+                /* 1줄 제한 - 넓이가 제한 */
+                width: calc(100% - 90px);
+            }
+            .pr .news .more {
+                position: relative; 
+                /* absolute를 안주려면 position 속성 중에 다른 값을 줘야함
+                   그나마 멀쩡한게 relative라서 줌 */
+                left: auto; /* left 속성을 주지 않은 것 처럼 해제 */
+                top: auto;
+                margin: 29px 0 0 0;
+                text-align: center;
+            }
+            .pr .news .more a {
+                padding: 6px 44px 6px 14px;
+                position: relative; /* after 정렬의 기준 */
+            }
+            .pr .news .more a::after {
+                content: "";
+                position: absolute; /* a를 기준으로 정렬 */
+                right: 18px;
+                top: 11px;
+                width: 5px;
+                height: 8px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4.684 7.973'%3E%3Cpath id='chevron_right_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M339.985-699.014,337.2-701.8a.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5.678.678,0,0,1,.5-.2.678.678,0,0,1,.5.2l3.289,3.289a.627.627,0,0,1,.152.232.792.792,0,0,1,.045.268.791.791,0,0,1-.045.268.626.626,0,0,1-.152.232l-3.289,3.289a.678.678,0,0,1-.5.2.678.678,0,0,1-.5-.2.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5Z' transform='translate(-337 703)' fill='%23fff'/%3E%3C/svg%3E%0A");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .pr .news .more a:hover::after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4.684 7.973'%3E%3Cpath id='chevron_right_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M339.985-699.014,337.2-701.8a.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5.678.678,0,0,1,.5-.2.678.678,0,0,1,.5.2l3.289,3.289a.627.627,0,0,1,.152.232.792.792,0,0,1,.045.268.791.791,0,0,1-.045.268.626.626,0,0,1-.152.232l-3.289,3.289a.678.678,0,0,1-.5.2.678.678,0,0,1-.5-.2.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5Z' transform='translate(-337 703)' fill='%23255698'/%3E%3C/svg%3E%0A");
+            }
+            .pr .news .more a span {
+                display: inline; 
+                /* 모바일에서만 보임 - 문장의 일부 글자를 보이게 할때는
+                   inline 줘야 줄바꿈이 안들어감... */
+            }
+            
+            .pr .video {
+                margin: 69px 0 0 0;
+            }
+            .pr .video .tit strong {
+                color: #255698;
+            }
+            .pr .video .tit h2 {
+                font-size: 25px;
+                margin: 4px 0 0 0;
+                color: #1D1D1D;
+            }
+            .pr .video .tit h2 em {
+                color: #255698;
+            }
+            .pr .video .tit h2 br {
+                display: block; /* 줄바꿈 다시 적용 */
+            }
+            .pr .video .list {
+                margin: 26px 0 0 0;
+            }
+            .pr .video .list ul li {
+                width: calc(50% - 8px);
+            }
+            .pr .video .list ul li:last-child {
+                display: none; /* 마지막 li 숨김 */
+            }
+            .pr .video .list ul li a .photo {
+                height: 99px;
+                border-radius: 10px;
+                border: 0;
+            }
+            .pr .video .list ul li a strong {
+                margin: 11px 0 0 0;
+                font-size: 15px;
+            }
+            .pr .video .more {
+                position: relative; /* absolute 해제 */
+                right: auto;
+                top: auto;
+                margin: 35px 0 0 0;
+                text-align: center;
+            }
+            .pr .video .more a {
+                border-color: #255698;
+                padding: 6px 45px 6px 23px;
+                color: #255698;
+                position: relative; /* after 정렬의 기준 */
+            }
+            .pr .video .more a::after {
+                content: "";
+                position: absolute; /* a를 기준으로 정렬 */
+                right: 18px;
+                top: 11px;
+                width: 5px;
+                height: 8px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4.684 7.973'%3E%3Cpath id='chevron_right_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M339.985-699.014,337.2-701.8a.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5.678.678,0,0,1,.5-.2.678.678,0,0,1,.5.2l3.289,3.289a.627.627,0,0,1,.152.232.792.792,0,0,1,.045.268.791.791,0,0,1-.045.268.626.626,0,0,1-.152.232l-3.289,3.289a.678.678,0,0,1-.5.2.678.678,0,0,1-.5-.2.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5Z' transform='translate(-337 703)' fill='%23255698'/%3E%3C/svg%3E%0A");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .pr .video .more a:hover::after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4.684 7.973'%3E%3Cpath id='chevron_right_24dp_5F6368_FILL0_wght400_GRAD0_opsz24' d='M339.985-699.014,337.2-701.8a.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5.678.678,0,0,1,.5-.2.678.678,0,0,1,.5.2l3.289,3.289a.627.627,0,0,1,.152.232.792.792,0,0,1,.045.268.791.791,0,0,1-.045.268.626.626,0,0,1-.152.232l-3.289,3.289a.678.678,0,0,1-.5.2.678.678,0,0,1-.5-.2.678.678,0,0,1-.2-.5.678.678,0,0,1,.2-.5Z' transform='translate(-337 703)' fill='%23255698'/%3E%3C/svg%3E%0A");
+            }
+            .pr .video .more a span {
+                display: inline; /* 모바일에서만 보임 */
+            }
+}/*media*/
+
+footer {
+    margin: 135px 0 0 0;
+    background-color: #202020;
+    color: rgba(255,255,255,0.8);
+    padding: 68px 0;
+}
+footer .f_nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 42px;
+}
+footer .f_nav ul li {
+    position: relative; /* after 정렬의 기준 */
+}
+footer .f_nav ul li::after {
+    position: absolute; /* li를 기준으로 정렬 */
+    right: -22px;
+    top: 5px;
+    width: 1px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.3);
+    content: "";
+}
+footer .f_nav ul li:last-child::after {
+    display: none; /* 숨김 */
+}
+footer .f_nav ul li.privacy a {
+    color: #66D7D1;
+    font-weight: 800;
+}
+footer .f_nav ul li a:hover {
+    text-decoration: underline;
+}
+footer .f_info {
+    margin: 35px 0 30px 0;
+}
+footer .f_info span {
+    margin: 5px 15px 0 0;
+    display: inline-block;
+    /* 모바일에서 한단락씩 줄바꿈 되도록 */
+}
+footer .copyright {
+    color: rgba(255,255,255,0.6);
+}
+@media screen and (max-width:640px){
+            footer {
+                margin: 82px 0 0 0;
+                padding: 42px 0 54px 0;
+            }
+            footer .f_nav ul {
+                gap: 6px 30px;
+            }
+            footer .f_nav ul li::after {
+                right: -16px;
+                top: 4px;
+                height: 10px;
+            }
+            footer .f_info {
+                margin: 30px 0 30px 0;
+            }
+}/* media */
