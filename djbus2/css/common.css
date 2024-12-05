@@ -23,8 +23,8 @@ body, html {
 @media screen and (max-width:640px){ 
                         /* 브라우저 넓이 640px에서만 실행 */
                         body, html {
-                            font-size: 15px;
-                            background-color: antiquewhite;
+                            font-size: 16px;
+                            background-color: aquamarine;
                         }
                         .wrapper {
                             width: auto; 
