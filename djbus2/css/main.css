@@ -153,6 +153,7 @@ header .gnb .gnb_wrap ul li a:hover span::after {
 .int .btn_wrap {
     margin: 58px 0 0 0;
     display: flex;
+    flex-wrap: wrap; /* 만약 버튼이 여러개라서 한줄에 표현이 안되면 줄 바꿈 허용 */
     gap: 10px;
 }
 .int .btn_wrap a {
@@ -181,10 +182,41 @@ header .gnb .gnb_wrap ul li a:hover span::after {
     height: 100%;
     object-fit: cover;
 }
-
-body {
-    background-color: yellow;
-}
+@media screen and (max-width:640px){
+                .int {
+                    margin: 61px 0 0 0;
+                }
+                .int .txt_left {
+                    display: block; /* flex해제 */
+                }
+                .int .txt_right {
+                    display: block; /* flex해제 */
+                    margin: 58px 0 0 0;
+                }
+                .int .inner {
+                    width: auto; /* 넓이 제한 풀고, 원래 넓이대로 */
+                    margin: 0 0 19px 0;
+                }
+                .int h2 {
+                    font-size: 25px;
+                    margin: 6px 0 9px 0;
+                }
+                .int .sub_tit {
+                    font-size: 17px;
+                    margin: 0 0 13px 0;
+                }
+                .int .btn_wrap {
+                    margin: 19px 0 0 0;
+                    gap: 5px;
+                }
+                .int .btn_wrap a {
+                    padding: 6px 14px; /* 2개쓰면 위아래/좌우값 */
+                }
+                .int .photo {
+                    height: 168px;
+                    border-radius: 10px;
+                }
+}/*media*/
 
 footer {
     margin-top: 500px;
