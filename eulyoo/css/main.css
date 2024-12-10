@@ -103,7 +103,7 @@ header .tnb .search::before {
 .visual {
     overflow: hidden; 
     /* 높이가 낮으면 글자가 영역 밖으로 나갈 수도 있어서 */
-    height: 100vh;
+    height: 100dvh;
     /* 모바일에서 네이버처럼 하단에 자신의 툴바가 나오면 내가 생각하는 100vh와 다름 */
     background: url(../images/visual_bg.jpg) no-repeat center center / cover;
     color: #fff;
