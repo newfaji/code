@@ -110,7 +110,7 @@ header .tnb .search::before {
     position: relative; /* scroll 정렬의 기준 */
 }
 .visual .wrapper {
-    padding: 60vh 0 0 0;
+    padding: 60dvh 0 0 0;
 }
 .visual .inner {
     /* h2와 p 전체의 콘텐츠의 높이를 암 
@@ -172,7 +172,7 @@ header .tnb .search::before {
 }
 @media screen and (max-width:640px){
                 .visual .wrapper {
-                    padding: 55vh 0 0 0;
+                    padding: 55dvh 0 0 0;
                 }
                 .visual h2 {
                     font-size: 40px;
@@ -204,6 +204,240 @@ header .tnb .search::before {
                     100% { bottom: -12px; }
                 }
 }/* media */
+
+.book {
+    margin: 139px 0 0 0;
+}
+.book .inner {
+    display: flex;
+    justify-content: space-between;
+    width: 1717px;
+    /* flex는 flex를 준 요소의 넓이보다 
+    내부의 넓이가 길면 무조건 넓이를 바꿈
+    넓이를 유지하려면 flex를 준 요소에 
+    넓이를 고정값으로 줘야함.. */
+    position: relative;
+    left: calc(50% - 630px);
+}
+.book .tit h2 {
+    font-family: 'eulyoo';
+    font-size: 45px;
+    line-height: 1.2;
+    color: #1D1D1D;
+    margin: 10px 0 9px 0;
+}
+.book .list ul {
+    display: flex;
+    gap: 24px;
+}
+.book .list ul li {
+    width: 260px;
+    /* pc와 모바일 모두 브라우저의 넓이에 따라서 
+       책의 넓이가 바뀌지 않고 보이는 책을 수만 달라짐 */
+}
+.book .list ul li a {
+    display: block;
+}
+.book .list ul li a .photo {
+    overflow: hidden;
+    font-size: 0; /* 이미지 하단에 여백 삭제 */
+    line-height: 0;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.book .list ul li a .photo img {
+    width: 100%;
+}
+.book .list ul li a h3 {
+    font-family: 'eulyoo';
+    font-size: 22px;
+    line-height: 1.2;
+    color: #1D1D1D;
+    padding: 25px 0 10px 0;
+
+    /* 1줄제한 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.book .list ul li a h3 span {
+    position: relative; /* after 정렬의 기준 */
+}
+.book .list ul li a h3 span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 1px;
+    background-color: #1D1D1D;
+    transition: 1s;
+}
+.book .list ul li a:hover h3 span::after {
+    width: 100%;
+}
+.book .more {
+    position: absolute; /* inner를 기준으로 정렬 */
+    left: 0;
+    top: 225px;
+}
+.book .more a {
+    display: block;
+    padding: 12px 103px 12px 27px;
+    background-color: #F4EFE9;
+    border-radius: 40px;
+    color: #796254;
+}
+.book .more a::after {
+    content: "";
+    position: absolute; /* more를 기준으로 정렬 */
+    right: 27px;
+    top: 19px;
+    width: 28px;
+    height: 9px;
+    background-image: url("data:image/svg+xml,%3Csvg width='26' height='8' viewBox='0 0 26 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 7H25L18.5 1' stroke='%23796254' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.book .more a:hover {
+    background-color: #796254;
+    color: #fff;
+}
+.book .more a:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='26' height='8' viewBox='0 0 26 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 7H25L18.5 1' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    animation-name: more_ani;
+    animation-timing-function: linear; /* 가속도 없음 */
+    animation-duration: 2s; /* 애니메이션 1번 실행 시간 */
+    animation-iteration-count: infinite; /* 무한반복 */
+}
+/* 화살표가 좌우로 움직이는 애니메이션 */
+@keyframes more_ani { 
+    0% {right: 27px;}
+    50% {right: 50px;}
+    100% {right: 27px;}
+}
+@media screen and (max-width:640px){
+                .book {
+                    margin: 79px 0 0 0;
+                }
+                .book .inner {
+                    display: block;
+                    width: auto;
+                    left: auto; /* 원래 안준 것 처럼 */
+                    margin: 0 0 0 20px; /* 왼쪽에만 */
+                }
+                .book .tit h2 {
+                    font-size: 35px;
+                    margin: 0;
+                }
+                .book .tit h2 br {
+                    display: none; /* 줄바꿈 삭제 */
+                }
+                .book .tit p {
+                    display: none;
+                }
+                .book .list {
+                    margin: 20px 0 0 0;
+                    overflow-x: auto;
+                    /* x는 좌우, 좌우면 내부 컨텐츠의 길이가 나보다 더 길면 
+                       콘텐츠를 좌우 스크롤 한다. */
+                }
+                .book .list ul {
+                    gap: 16px;
+                    width: 984px;
+                    /*  180 * 5 = 900
+                        16 * (5-1) = 64 
+                        900 + 64 = 964 */
+                }
+                .book .list ul li {
+                    width: 180px;
+                    /* pc와 모바일 모두 브라우저의 넓이에 따라서 
+                    책의 넓이가 바뀌지 않고 보이는 책을 수만 달라짐 */
+                }
+                .book .list ul li a h3 {
+                    font-size: 20px;
+                    padding: 13px 0 5px 0;
+                }
+                .book .more {
+                    left: auto;
+                    right: 20px; 
+                    /* left:0;이었는데 right:0;으로 변경시 
+                      반드시 left:auto;로 바꿔주고 right를 줘야함. */
+                    top: 3px;
+                }
+                .book .more a {
+                    width: 37px;
+                    height: 37px;
+                    padding: 0;
+                    font-size: 0; /* 글자 숨김 */
+                    line-height: 0;
+                }
+                .book .more a::after {
+                    display: none; /* 숨김 */
+                }
+                .book .more a::before {
+                    content: "";
+                    position: absolute; /* more를 기준으로 정렬 */
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.5 12.5H6.5C6.35833 12.5 6.23958 12.452 6.14375 12.356C6.04792 12.26 6 12.1411 6 11.9992C6 11.8574 6.04792 11.7388 6.14375 11.6433C6.23958 11.5478 6.35833 11.5 6.5 11.5H11.5V6.5C11.5 6.35833 11.548 6.23958 11.644 6.14375C11.74 6.04792 11.8589 6 12.0008 6C12.1426 6 12.2613 6.04792 12.3568 6.14375C12.4523 6.23958 12.5 6.35833 12.5 6.5V11.5H17.5C17.6417 11.5 17.7604 11.548 17.8562 11.644C17.9521 11.74 18 11.8589 18 12.0008C18 12.1426 17.9521 12.2613 17.8562 12.3568C17.7604 12.4523 17.6417 12.5 17.5 12.5H12.5V17.5C12.5 17.6417 12.452 17.7604 12.356 17.8562C12.26 17.9521 12.1411 18 11.9992 18C11.8574 18 11.7388 17.9521 11.6433 17.8562C11.5478 17.7604 11.5 17.6417 11.5 17.5V12.5Z' fill='%23796254'/%3E%3C/svg%3E%0A");
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: 24px; 
+                }
+                .book .more a:hover::before {
+                    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.5 12.5H6.5C6.35833 12.5 6.23958 12.452 6.14375 12.356C6.04792 12.26 6 12.1411 6 11.9992C6 11.8574 6.04792 11.7388 6.14375 11.6433C6.23958 11.5478 6.35833 11.5 6.5 11.5H11.5V6.5C11.5 6.35833 11.548 6.23958 11.644 6.14375C11.74 6.04792 11.8589 6 12.0008 6C12.1426 6 12.2613 6.04792 12.3568 6.14375C12.4523 6.23958 12.5 6.35833 12.5 6.5V11.5H17.5C17.6417 11.5 17.7604 11.548 17.8562 11.644C17.9521 11.74 18 11.8589 18 12.0008C18 12.1426 17.9521 12.2613 17.8562 12.3568C17.7604 12.4523 17.6417 12.5 17.5 12.5H12.5V17.5C12.5 17.6417 12.452 17.7604 12.356 17.8562C12.26 17.9521 12.1411 18 11.9992 18C11.8574 18 11.7388 17.9521 11.6433 17.8562C11.5478 17.7604 11.5 17.6417 11.5 17.5V12.5Z' fill='%23fff'/%3E%3C/svg%3E%0A");
+                }
+}/* media */
+
+.interview {
+    padding: 119px 0 149px 0;
+    margin: 104px 0 0 0;
+    background-color: rgba(244, 239, 233, 0.7);
+}
+.interview .tit {
+    text-align: center;
+}
+.interview .tit h2 {
+    font-family: 'eulyoo';
+    font-size: 45px;
+    line-height: 1.2;
+    color: #1D1D1D;
+    margin: 0 0 9px 0;
+}
+.interview .list {
+    margin: 55px 0 0 0;
+}
+.interview .list ul {
+    display: flex;
+    justify-content: space-between;
+}
+.interview .list ul li {
+    width: 404px;
+}
+.interview .list ul li:nth-child(2) {
+    margin: 46px 0 0 0;
+}
+.interview .list ul li a {
+    display: block;
+}
+.interview .list ul li a .photo {
+    overflow: hidden;
+    height: 428px;
+    border-radius: 50px 0 50px 0;
+}
+.interview .list ul li:nth-child(2) a .photo {
+    border-radius: 0 50px 0 50px;
+}
+.interview .list ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
 
 footer {
     margin-top: 500px;
