@@ -1,6 +1,6 @@
 @import url(default.css); /* default.css를 이 문서에 복사해서 넣은 것처럼 불러오기 */
 @import url(font.css);
-@import url(common.css);
+@import url(common.css?v=2412111743);
 
 header {
     position: absolute; /* wrap을 기준으로 정렬 */
