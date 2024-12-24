@@ -21,7 +21,7 @@
             모바일에서 메뉴를 열었을때 : menu_mo
             검색을 클릭했을때 (pc/mobile 공통) : sch_open
         -->
-        <header class="fixed sch_open">
+        <header class="menu_mo">
             <h1 class="logo"><a href="index.html">PETcare</a></h1>
             <nav class="gnb">
                 <button class="gnb_open">메뉴 열기</button>
@@ -72,10 +72,12 @@
                         <div class="search_area">
                             <form>
                                 <fieldset>
-                                    <legend>검색</legend>
-                                    <label for="keyword">검색어입력</label>
-                                    <input type="text" id="keyword"><!--검색어 입력창-->
-                                    <input type="submit"><!--검색버튼-->
+                                    <div class="inner">
+                                        <legend>검색</legend>
+                                        <label for="keyword">검색어입력</label>
+                                        <input type="text" id="keyword" class="keyword"><!--검색어 입력창-->
+                                        <input type="submit" class="btn"><!--검색버튼-->
+                                    </div>
                                 </fieldset>
                             </form>
                         </div><!--search_area-->
