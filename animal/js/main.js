@@ -4,6 +4,7 @@ $(document).ready(function(){
     let device_status //브라우저가 pc인지 mobile상태인지
     let window_w //브라우저의 넓이
     let scrolling //브라우저가 스크롤 된 값
+    let tab_name //find의 클릭한 tab의 이름
 
     /**************************** visual 팝업 (시작) ************************************/
     const visual_swiper = new Swiper('.visual .swiper', { /* 팝업을 감싼는 요소의 class명 */
@@ -67,8 +68,10 @@ $(document).ready(function(){
         /* 스크롤을 내린상태에서 마우스를 오버했다가 아웃하면 header에 클래스가 사라짐
            스크롤된 값이 0이거나 0보다 작을때만 삭제..  */
         if(scrolling <= 0){
-            $(this).removeClass('fixed')
-            console.log('마우스를 header에서 내렸을때')
+            if($('header').hasClass('sch_open') == false){ //header에 sch_open이 없을때
+                $(this).removeClass('fixed')
+                //console.log('경우의 수1')
+            }
         }
     })
 
@@ -78,14 +81,9 @@ $(document).ready(function(){
         //console.log(scrolling)
         if(scrolling > 0){//스크롤을 내렸을때
             $('header').addClass('fixed')
-        }else{//맨꼭대기
+        }else if(($('header').hasClass('sch_open') == false) && ($('header').hasClass('menu_pc') == false)){//맨꼭대기
             /* 검색이 열려있는 상태에서는 class삭제 안함 -- header에 sch_open클래스가 있으면 열린상태 */
-            if($('header').hasClass('sch_open') == false){
-                if($('header').hasClass('menu_pc') == false){ //메뉴가 열린 상태가 아니라면
-                    $('header').removeClass('fixed')
-                    console.log('위로 스크롤 했을때')
-                }
-            }
+            $('header').removeClass('fixed')
         }
     }
     scroll_chk() //함수의 실행 - 로딩된 후 1번
@@ -143,6 +141,107 @@ $(document).ready(function(){
     })
 
     /**************************** pc버전 메뉴열기 (종료)  ************************************/
+
+    /**************************** 모바일버전 메뉴열기 (시작)  ***********************************
+     *  header .gnb .gnb_open 를 클릭하면  header에 menu_mo 클래스 추가
+     *  header .gnb .gnb_close 를 클릭하면 header에서 menu_mo 클래스 삭제
+    */
+
+    //console.log('메뉴 열기 전')
+    $('header .gnb .gnb_open').on('click', function(){
+        //console.log('메뉴 열기 누름')
+        $('header').addClass('menu_mo')
+        $('html, body').css({overflow : 'hidden', height : $(window).height()}).bind('scroll touchmove mousewheel', function(e){e.preventDefault();e.stopPropagation();return false;},function(){passive:false});
+    })
+    //console.log('실행되니???')
+    $('header .gnb .gnb_close').on('click', function(){
+        //console.log('누름')
+        $('header').removeClass('menu_mo')
+        $('html, body').css({overflow : 'visible', height : 'auto'}).unbind('scroll touchmove mousewheel');
+    })
+
+    /**************************** 모바일버전 메뉴열기 (종료)  ************************************/
     
+    /**************************** 모바일버전 2차 메뉴열기 (시작)  ***********************************
+     * li를 클릭할것이냐... a를 클릭할 것이냐.. => a를 클릭.. 
+     * ===> 2차 메뉴가 있는 1차 메뉴는 하위메뉴를 여는 기능을 갖음 (자기 자신의 href는 작동 X)
+     * ===> 2차 메뉴를 가지고 있는 1차 메뉴인지 아닌지 구분
+     * header .gnb .gnb_wrap ul.depth1 > li:has(ul.depth2) > a
+     * 1차 메뉴 li에 open이라는 클래스를 추가
+     * 
+     * 1. 클릭한 메뉴만 열리고 다른 메뉴는 모두 닫기
+     * 2. 이미 열려있는 메뉴를 다시 클릭하면 닫기
+     * 메뉴를 클릭했을때 이미 열린 메뉴 (나만 닫기) 또는 닫혀 메뉴 (나머지 다 닫고, 나만 열기)
+     */
+
+    $('header .gnb .gnb_wrap ul.depth1 > li:has(ul.depth2) > a').on('click', function(e){
+        if(device_status == 'mobile'){//모바일일때만
+            e.preventDefault(); //href를 작동 안게 막는 코드
+            if($(this).parent().hasClass('open') == false){
+                //열린메뉴가 아닐 경우
+                console.log('열린 메뉴 아님')
+                $('header .gnb .gnb_wrap ul.depth1 > li').removeClass('open')
+                $(this).parent().addClass('open')
+            }else{
+                //열린 메뉴일 경우
+                console.log('열린 메뉴 맞음')
+                $('header .gnb .gnb_wrap ul.depth1 > li').removeClass('open')
+            }//if
+        }//if
+    })
+
+    /**************************** 모바일버전 2차 메뉴열기 (종료)  ************************************/
+
+    /************************* 찾습니다. 가족을 팝업 (시작)  **************************/
+    const find_panel01_swiper = new Swiper('.find .panel01 .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            641: {    /* 1300px 이상일때 적용 */
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+        },
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        navigation: {
+            nextEl: '.find .tab_content .panel01 .btn_wrap .next',
+            prevEl: '.find .tab_content .panel01 .btn_wrap .prev',
+        },
+    });
+    const find_panel02_swiper = new Swiper('.find .panel02 .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            641: {    /* 1300px 이상일때 적용 */
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+        },
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        navigation: {
+            nextEl: '.find .tab_content .panel02 .btn_wrap .next',
+            prevEl: '.find .tab_content .panel02 .btn_wrap .prev',
+        },
+    });
+
+    /************************* 찾습니다. 가족을 팝업 (끝)  **************************/
+    /************************* 찾습니다. 가족을 탭 기능 (시작)  *************************
+     * .find .tab_list ul li 버튼을 누른 후 하는 일
+     * li에 active 클래스 추가
+     * li button에 title="선택됨" 입력
+     * li에 data-tab의 값을 가져와서 .tab_content .tab_panel 중에서 data-tab이 같은 값인 요소 찾아서 active 클래스
+    */
+    /************************* 찾습니다. 가족을 탭 기능 (끝)  **************************/
+
+    $('.find .tab_list ul li').on('click', function(){
+        $('.find .tab_list ul li').removeClass('active')
+        $(this).addClass('active')
+        $('.find .tab_list ul li button').attr('title', '')
+        $(this).find('button').attr('title', '선택됨')
+        tab_name = $(this).attr('data-tab')
+        console.log(tab_name)
+        $('.find .tab_content .tab_panel').removeClass('active')
+        $('.find .tab_content').find('[data-tab="'+tab_name+'"]').addClass('active')
+    })
 
 })//document.ready
