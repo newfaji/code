@@ -37,6 +37,8 @@ body, html {
 :root {
     --base-font-size: 17px;
     --header-h: 100px;
+    --header-depth2-h: 300px;
+    --main-color: #ED1C24;
 }
 @media screen and (max-width:1300px){
     :root {
