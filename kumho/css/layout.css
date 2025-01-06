@@ -255,7 +255,10 @@ header.fixed .logo a::before, header.menu_pc .logo a::before {
                     background-color: #fff;
                 }
                 header.menu_pc .gnb .gnb_wrap ul.depth1 > li > ul.depth2 {
-                    display: block; /* 나타남 */
+                    display: block !important; 
+                    /* 2차메뉴를 모바일에서 jquery로 slide 효과를 줘서 style="display:none;"이라고 
+                    써놓는 경우, 일반적인 css보다 우선순위가 높음
+                    그래서 css에서 important를 주면 우선순위를 높일 수 있음 */
                 }
 }/* media */
 @media screen and (max-width:1000px){
@@ -319,14 +322,13 @@ header.fixed .logo a::before, header.menu_pc .logo a::before {
                     background-size: contain;
                 }
                 header .gnb .gnb_wrap ul.depth1 > li ul.depth2 {
-                    /*display: none;*/
-                    overflow: hidden;
-                    height: 0;
+                    display: none;
+                    /*overflow: hidden;
+                    height: 0;*/
                     background-color: var(--main-color);
                     color: #fff;
                     font-size: 1.2143rem;
-                    transition: height 0.5s;
-                    /*padding: 1.4706em 0 1.4706em 1.1765em;*/
+                    padding: 1.4706em 0 1.4706em 1.1765em;
                 }
                 header .gnb .gnb_wrap ul.depth1 > li ul.depth2 > li > a {
                     display: block;
@@ -342,8 +344,8 @@ header.fixed .logo a::before, header.menu_pc .logo a::before {
                     transform: rotate(180deg);
                 }
                 header .gnb .gnb_wrap ul.depth1 > li.open ul.depth2 {
-                    /*display: block;  나타남 */
-                    height: 200px;
+                    /*display: block;  나타남
+                    height: 300px; */
                 }
                 header .gnb .gnb_close {
                     /* display: none;  숨김 */
