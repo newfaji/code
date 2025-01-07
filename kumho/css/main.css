@@ -6,7 +6,7 @@
 @import url(default.css);
 @import url(font.css);
 @import url(common.css);
-@import url(layout.css?v=2501061756); 
+@import url(layout.css?v=2501071217); 
 
 .visual {
     position: relative; /* ctrl_wrap 정렬의 기준 */
