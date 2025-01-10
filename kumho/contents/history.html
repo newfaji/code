@@ -146,15 +146,17 @@
                 <!--각 페이지별 콘텐츠 시작, 절대 이름이 중복되면 안됨 
                     cnt_파일명 으로 함-->
                 <div class="sub_contents cnt_history">
+                    
                     <div class="wrapper">
+                        <!-- 보일때는 active 클래스 추가 -->
                         <div class="history_tab">
                             <ul>
                                 <!-- a는 내부링크나 다른페이지로 이동하는 링크를 a로 코딩
                                      클릭해서 jquery를 작동시킴 - button 태그로 코딩 -->
-                                <li class="active"><button title="선택됨">현재 ~ 2011년</button></li>
-                                <li><button>2010년 ~ 2001년</button></li>
-                                <li><button>2000 ~ 1991년</button></li>
-                                <li><button>1990년 ~ 1960년</button></li>
+                                <li class="active" data-anchor="history_2010"><button title="선택됨">현재 ~ 2011년</button></li>
+                                <li data-anchor="history_2000"><button>2010년 ~ 2001년</button></li>
+                                <li data-anchor="history_1990"><button>2000 ~ 1991년</button></li>
+                                <li data-anchor="history_1980"><button>1990년 ~ 1960년</button></li>
                             </ul>
                         </div>
                         <div class="history_wrap">
