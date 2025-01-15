@@ -167,7 +167,98 @@
     }
 }
 @media screen and (max-width:1000px){
-    
+
+}
+
+.scroll_event {
+    padding: 300px 0 150px 0;
+}
+.scroll_event .event_wrap {
+    position: relative; /* h2 정렬의 기준 */
+    display: flex;
+    justify-content: flex-end;
+}
+.scroll_event .event_wrap h2 {
+    position: absolute;
+    left: 0;
+    top: 1.3em;
+    font-size: 9rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    transition: 0.2s;
+}
+.scroll_event .event_wrap .photo {
+    overflow: hidden;
+    border-radius: 1.2em;
+    max-width: 52.5em;
+    width: 100%;
+    height: 30em;
+}
+.scroll_event .event_wrap .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media screen and (max-width:1000px){
+    .scroll_event .event_wrap h2 {
+        top: 0.2em;
+        font-size: 6rem;
+    }
+}
+@media screen and (max-width:640px){
+    .scroll_event .event_wrap h2 {
+        font-size: 4rem;
+    }
+}
+
+.book, .best {
+    margin: 15em 0 0 0;
+}
+.book .list, .best .list {
+    position: relative;
+    left: calc(50% - 630px);
+    width: calc(50% + 630px);
+    border: 4px solid #ff0000;
+}
+.book .list .popup .popup_wrap .popup_item,
+.best .list .swiper ul li { /* 팝업 1개 */
+    width: 11.18em;
+    margin-right: 24px;
+}
+.book .list .popup .popup_wrap .popup_item a,
+.best .list .swiper ul li a {
+    display: block;
+}
+.book .list .popup .popup_wrap .popup_item a .photo,
+.best .list .swiper ul li a .photo {
+    overflow: hidden;
+    height: 13em;
+    border-radius: 0.3em;
+}
+.book .list .popup .popup_wrap .popup_item a .photo img,
+.best .list .swiper ul li a .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.book .list .popup .popup_wrap .popup_item a h2,
+.best .list .swiper ul li a h2 {
+    margin: 0.4em 0 0 0;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #1d1d1d;
+}
+.book .list .popup .popup_wrap .popup_item a span,
+.best .list .swiper ul li a span {
+    display: none; /* 안보임 */
+    margin: 0.9em 0 0 0;
+}
+@media screen and (max-width:1300px){
+    .book .list {
+        left: 20px;
+        width: calc(100% - 20px);
+    }
 }
 
 body {

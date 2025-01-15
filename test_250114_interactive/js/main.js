@@ -234,4 +234,72 @@ $(document).ready(function(){
     })
 
     /************************ 동영상 콘텐츠가 브라우저에 고정(확대) :: 종료 **********************/
+
+    /************************ 스크롤 시 콘텐츠 이동 :: 시작 *********************
+     * 시작 시점 .scroll_event .event_wrap이 화면에 나타나면
+     * .scroll_event .event_wrap h2의 transform:translateY() 값을 조절해서 계속 위로 이동
+     * (현재 스크롤값 - 스크롤 시작값)에 일정 수를 곱해서 px로 줌....
+    */
+    let ev_area_name = $('.scroll_event .event_wrap') //감싸는 영역이름
+    let ev_area_start //이벤트가 시작하는 값
+    let ev_move_name = $('.scroll_event .event_wrap h2') //움직일 요소
+    let ev_move //움직일 값
+
+    function scroll_event(){
+        ev_area_start = ev_area_name.offset().top - window_h
+        //console.log('스크롤값', scrolling, '시작값', ev_area_start)
+        if(scrolling > ev_area_start){
+            //console.log('움직일꺼다...')
+            ev_move = (ev_area_start - scrolling) / window_h * 250
+        }else{
+            //console.log('0이다....')
+            ev_move = 0
+        }//if종료
+        //console.log(ev_move)
+        ev_move_name.css('transform', 'translateY('+ ev_move +'px)')
+    }//function 종료
+    scroll_event() //문서가 로딩될때
+    $(window).scroll(function(){ //스크롤될때마다
+        scroll_event()
+    })
+    $(window).resize(function(){ //리사이즈 될때마다
+        scroll_event()
+    })
+
+    /************************ 스크롤 시 콘텐츠 이동 :: 종료 **********************/
+
+    /************************ slick 팝업 :: 시작 ********************
+     * 1개 (왼쪽)가 스타일이 다름 ..... 
+     * 
+    */
+
+    $('.book .list .popup .popup_wrap').slick({
+        autoplay: false, //팝업 자동 실행
+        autoplaySpeed: 3000, //팝업이 머무는 시간
+        speed: 500, //팝업 전환 속도
+        dots: false, //하단 페이지 버튼 (true, false)
+        arrows: true,  //다음, 이전팝업 (true, false)
+        //pauseOnHover: true, //마우스호버시 일시정지
+        infinite: true, //무한반복
+        //variableWidth: true, //넓이를 자유롭게 설정
+        slidesToShow: 4, //한번에 보일 팝업 수
+        //slidesToScroll: 1, //한번 드래그에 움직이는 슬라이드 제한
+        swipeToSlide: true, //드래그한만큼 슬라이드 움직이기
+        //centerMode: true, //가운데정렬(가운데가 1번)
+    });
+
+    /************************ slick 팝업 :: 종료 **********************/
+
+    /************************ swiper 팝업 :: 시작 **********************/
+    const swiper = new Swiper('.best .list .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 4, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 24, /* 팝업과 팝업 사이 여백 */
+        loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    /************************ swiper 팝업 :: 종료 **********************/
 })
