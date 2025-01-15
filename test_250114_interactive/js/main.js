@@ -141,4 +141,97 @@ $(document).ready(function(){
     })
 
     /************************ 이미지 넓이 조절 애니메이션 :: 종료 ***********************/
+
+    /************************ 스크롤되면 배경이 검은색으로 변경되는 애니메이션 :: 시작 **********************
+     * .bg_change 영역이 브라우 상단쯤에 닿으면 black 추가됨 (상단에 닿지 않았을때는 black이 없음)
+     * 상단에 도달하기 전 :: black 클래스 없음
+     * 상단에 도달한 이후 :: black 클래스 추가
+    */
+    let bg_name = $('.bg_change')
+    let bg_class = 'black'
+    let bg_start //배경색을 바꾸주기 시작하는 시점
+
+    function bg_chage(){
+        bg_start = bg_name.offset().top - (window_h * 0.2)
+        //console.log('스크롤', scrolling, 'bg_chage top값', bg_start)
+        if(scrolling < bg_start){
+            bg_name.removeClass(bg_class)
+        }else{
+            bg_name.addClass(bg_class)
+        }
+    }
+    bg_chage() //로딩이 완료되었을때
+
+    $(window).scroll(function(){ //스크롤 할때마다
+        bg_chage()
+    })
+
+    $(window).resize(function(){ //브라우저가 리사이즈가 될때
+        bg_chage()
+    })
+
+    /************************ 스크롤되면 배경이 검은색으로 변경되는 애니메이션 :: 종료 **********************/
+
+    /************************ 동영상 콘텐츠가 브라우저에 고정(확대) :: 시작 *********************
+     * .bg_change .video_fit .video_area 이 긴영역의 
+     *  - 브라우저의 상단에 도달하기이전                data-status="before"
+     *  - 도달해서 스크롤 되는 중                      data-status="fixed"
+     *  - 이미지 스크롤 되어서 화면 밖으로 사라지는 경우 data-status="after"
+     *  >>>> 스크롤 되는 중에는 동영사의 크기가 천천히 늘어 남 ..... 
+     * 
+     * >>> 스크롤 1000일때 고정 시작
+     *     스크롤 2000일때 고정 종료   ---- 스크롤 1000동안 사이즈가 리사이즈됨
+     * >>> 리사이즈 시작 값은 80
+     *     리사이즈 종료 값은 100 --- 20만 변경됨...
+     * 
+     * >>> 예를들어 내가 현재 스크롤 값이 1500임 ... 그럼 현재 넓이가 얼마 ...
+     *     vf_area_gap = 2000(vf_end) - 1000(vf_start) = 1000
+     *     vf_scroll_per = 1500(scrolling) - 1000(vf_start) = 500 / 1000(vf_area_gap) = 0.5
+     *     vf_resize_w = 100(vf_resize_end) - 80(vf_resize_start) = 20 * 0.5(vf_scroll_per) = 10 + 80(vf_resize_start) = 90
+    */
+
+    let vf_area_name =  $('.bg_change .video_fit .video_area')
+    let vf_resize_name = $('.bg_change .video_fit .video_area .video_wrap .video_inner')
+    let vf_resize_start = 80
+    let vf_resize_end = 100
+    let vf_resize_w // 리사이즈 될때 계산한 넓이값
+    let vf_area_gap // 리사이즈를 계산해야할 스크롤 구간값
+    let vf_scroll_per //스크롤 된 값의 퍼센트
+    let vf_start //영역을 고정하는 시작 지점
+    let vf_end //영역 고정을 종료하는 종료 지점 
+
+    function video_fixed(){
+        vf_start = vf_area_name.offset().top
+        vf_end = vf_area_name.offset().top + vf_area_name.height() - window_h 
+        vf_area_gap = vf_end - vf_start
+        //console.log('스크롤값', scrolling, '상단값', vf_start, '종료값', vf_end)
+        if(scrolling < vf_start){
+            vf_area_name.attr('data-status', 'before')
+            //기존값을 지우고 내가 준 값으로 교체함 ...
+            vf_resize_w = vf_resize_start
+        }else if(scrolling < vf_end){
+            vf_area_name.attr('data-status', 'fixed')
+            vf_scroll_per = (scrolling - vf_start) / vf_area_gap
+            vf_resize_w = ((vf_resize_end - vf_resize_start) * vf_scroll_per) + vf_resize_start
+            vf_resize_w = vf_resize_w * 1.05
+            if(vf_resize_w > vf_resize_end){ ///end값이상 늘어나지 못하게 막음
+                vf_resize_w = vf_resize_end
+            }
+        }else{
+            vf_area_name.attr('data-status', 'after')
+            vf_resize_w = vf_resize_end
+        }//if
+        //console.log(vf_resize_w)
+        vf_resize_name.width(vf_resize_w + '%')
+        vf_resize_name.height(vf_resize_w + '%')
+    }//function
+    video_fixed() //문서 로딩되었을때 1번 실행
+    $(window).scroll(function(){//스크롤할때마다 실행
+        video_fixed() 
+    })
+    $(window).resize(function(){//리사이즈 될때마다 실행
+        video_fixed() 
+    })
+
+    /************************ 동영상 콘텐츠가 브라우저에 고정(확대) :: 종료 **********************/
 })

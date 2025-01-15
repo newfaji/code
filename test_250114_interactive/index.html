@@ -49,7 +49,7 @@
         </div>
     </section><!--bg_fixed-->
     <!-- 스크롤을 내리면 black 추가 -->
-    <div class="bg_change">
+    <div class="bg_change ">
         <section class="video_fit">
             <div class="tit">
                 <div class="wrapper">
@@ -60,11 +60,21 @@
                         영상 속에 담긴 형지엘리트의 브랜드 가치와 비전을 경험해보세요.</p>
                 </div><!--wrapper-->
             </div><!--tit-->
-            <div class="video_wrap">
-                <video>
-                    <source src="images/movie.mp4" type="video/mp4">
-                </video>
-            </div>
+            <div class="video_area" data-status="before"> 
+                <!-- 비디오가 스크롤될 영역의 높이를 줌 
+                    계속 상태를 업데이트 해야 해서 class로 주기보다 data로 주는게 나음
+                    처음에 고정되기 이전   before
+                    고정되었을때          fixed
+                    고정 이후             after
+                -->
+                <div class="video_wrap">
+                    <div class="video_inner">
+                        <video autoplay muted loop playsinline>
+                            <source src="images/movie.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div><!--video_wrap-->
+            </div><!--video_area-->
         </section><!--video_fit-->
         <section class="scroll_event"></section><!--scroll_event-->
     </div><!--bg_change-->
