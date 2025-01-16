@@ -275,31 +275,42 @@ $(document).ready(function(){
 
     $('.book .list .popup .popup_wrap').slick({
         autoplay: false, //팝업 자동 실행
-        autoplaySpeed: 3000, //팝업이 머무는 시간
-        speed: 500, //팝업 전환 속도
+        autoplaySpeed: 0, //팝업이 머무는 시간
+        speed: 0, //팝업 전환 속도
+        //cssEase: 'linear',
         dots: false, //하단 페이지 버튼 (true, false)
         arrows: true,  //다음, 이전팝업 (true, false)
-        //pauseOnHover: true, //마우스호버시 일시정지
+        pauseOnHover: false, //마우스호버시 일시정지
         infinite: true, //무한반복
-        //variableWidth: true, //넓이를 자유롭게 설정
-        slidesToShow: 4, //한번에 보일 팝업 수
+        variableWidth: true, //넓이를 자유롭게 설정
+        slidesToShow: 5, //한번에 보일 팝업 수
         //slidesToScroll: 1, //한번 드래그에 움직이는 슬라이드 제한
         swipeToSlide: true, //드래그한만큼 슬라이드 움직이기
-        //centerMode: true, //가운데정렬(가운데가 1번)
+        centerMode: false, //가운데정렬(가운데가 1번)
     });
 
     /************************ slick 팝업 :: 종료 **********************/
 
     /************************ swiper 팝업 :: 시작 **********************/
     const swiper = new Swiper('.best .list .swiper', { /* 팝업을 감싼는 요소의 class명 */
-        slidesPerView: 4, /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
         spaceBetween: 24, /* 팝업과 팝업 사이 여백 */
         loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
-
+       
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.best .list .btn_wrap .next',
+            prevEl: '.best .list .btn_wrap .prev',
         },
     });
+    swiper.on('slideChangeTransitionEnd', function () {
+        console.log('end')
+        swiper.slideReset()
+        swiper.update()
+    });
+    swiper.on('slideChange', function () {
+        console.log('change')
+        swiper.update()
+    });
+      
     /************************ swiper 팝업 :: 종료 **********************/
 })
