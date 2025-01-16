@@ -313,4 +313,26 @@ $(document).ready(function(){
     });
       
     /************************ swiper 팝업 :: 종료 **********************/
+
+    /************************ 마우스포인터 수정 :: 시작 **********************/
+
+    $(window).on('scroll mousemove', function(e){  /* html cursor가 마우스 포인터를 따라다니게 하는 값 */
+        $('.cursor').css('left', e.pageX + 'px');
+        $('.cursor').css('top', e.pageY + 'px');
+    });
+    $('.book a').hover(function(){
+        $('.cursor').toggleClass('drag');
+    });
+    $('.best a').hover(function(){
+        $('.cursor').toggleClass('view');
+    });
+
+    // $('.book a').on('mouseenter', function(){
+    //     $('.cursor').addClass('drag');
+    // })
+    // $('.book a').on('mouseleave', function(){
+    //     $('.cursor').removeClass('drag');
+    // })
+
+    /************************ 마우스포인터 수정 :: 종료 **********************/
 })

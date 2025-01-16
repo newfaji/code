@@ -384,6 +384,61 @@
     }
 }/* media */
 
+.cursor { 
+	position: absolute;  /* 반드시 absolute여야 하고 위치는 jquery에서 적용 시킴 */
+	z-index: 1000;
+	transform: translate(0, 0); /* 커서 위치 조정 */
+	display:none; /* 평소에는 보이지 않게 하기 위해서 - 만약 원래도 따라다니는 마우스 포인터를 디자인하려면 스타일을 주면 됨. */
+    bottom: 200px;
+    left: 100px;
+}
+.cursor.drag {
+	display: flex;  /* jquery에서 특정 요소에 마우스를 오버하면 class명을 추가해주고 그때 나타남 */
+    justify-content: center;
+    align-items: center;
+    width: 8em;
+    height: 8em;
+    background-color: rgba(255, 103, 103, 0.8);
+    border-radius: 50%;
+    color: #fff;
+}
+.cursor.drag::before,
+.cursor.drag::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5em;
+    height: 1.5em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.cursor.drag::before {
+    left: 0.8em;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.825 10.9999L19 10.9999C19.2833 10.9999 19.5208 11.0957 19.7125 11.2874C19.9042 11.4791 20 11.7166 20 11.9999C20 12.2832 19.9042 12.5207 19.7125 12.7124C19.5208 12.9041 19.2833 12.9999 19 12.9999L7.825 12.9999L12.725 17.8999C12.925 18.0999 13.0208 18.3332 13.0125 18.5999C13.0042 18.8666 12.9 19.0999 12.7 19.2999C12.5 19.4832 12.2667 19.5791 12 19.5874C11.7333 19.5957 11.5 19.4999 11.3 19.2999L4.7 12.6999C4.6 12.5999 4.52917 12.4916 4.4875 12.3749C4.44583 12.2582 4.425 12.1332 4.425 11.9999C4.425 11.8666 4.44583 11.7416 4.4875 11.6249C4.52917 11.5082 4.6 11.3999 4.7 11.2999L11.3 4.69989C11.4833 4.51656 11.7125 4.42489 11.9875 4.42489C12.2625 4.42489 12.5 4.51656 12.7 4.69989C12.9 4.89989 13 5.13739 13 5.41239C13 5.68739 12.9 5.92489 12.7 6.12489L7.825 10.9999Z' fill='white' fill-opacity='0.5'/%3E%3C/svg%3E%0A");
+}
+.cursor.drag::after {
+    right: 0.8em;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.175 13.0001H5C4.71667 13.0001 4.47917 12.9043 4.2875 12.7126C4.09583 12.5209 4 12.2834 4 12.0001C4 11.7168 4.09583 11.4793 4.2875 11.2876C4.47917 11.0959 4.71667 11.0001 5 11.0001H16.175L11.275 6.10011C11.075 5.90011 10.9792 5.66678 10.9875 5.40011C10.9958 5.13344 11.1 4.90011 11.3 4.70011C11.5 4.51678 11.7333 4.42094 12 4.41261C12.2667 4.40428 12.5 4.50011 12.7 4.70011L19.3 11.3001C19.4 11.4001 19.4708 11.5084 19.5125 11.6251C19.5542 11.7418 19.575 11.8668 19.575 12.0001C19.575 12.1334 19.5542 12.2584 19.5125 12.3751C19.4708 12.4918 19.4 12.6001 19.3 12.7001L12.7 19.3001C12.5167 19.4834 12.2875 19.5751 12.0125 19.5751C11.7375 19.5751 11.5 19.4834 11.3 19.3001C11.1 19.1001 11 18.8626 11 18.5876C11 18.3126 11.1 18.0751 11.3 17.8751L16.175 13.0001Z' fill='white' fill-opacity='0.5'/%3E%3C/svg%3E%0A");
+}
+.cursor.drag span::before {
+    content: "Drag";
+}
+.cursor.view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6.2em;
+    height: 6.2em;
+    border-radius: 50%;
+    backdrop-filter: blur(10px) brightness(130%);
+    color: #fff;
+}
+.cursor.view span::before {
+    content: "view";
+}
+
 body {
     margin: 0 0 100vh 0;
 }
