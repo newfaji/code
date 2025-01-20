@@ -1,0 +1,22 @@
+/*
+ * main.css
+ * 메인페이지에만 적용되는 스타일 입력,
+ * 다른 css import 
+ */
+@import url(default.css);
+@import url(font.css);
+@import url(common.css);
+@import url(layout.css); 
+
+.visual, .introduce, footer {
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 100px;
+    text-align: center;
+}
+.tree, .story {
+    background-color: var(--sub-color);
+    color: #fff;
+    font-size: 100px;
+    text-align: center;
+}
