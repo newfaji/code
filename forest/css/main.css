@@ -8,15 +8,79 @@
 @import url(common.css);
 @import url(layout.css); 
 
-.visual, .introduce, footer {
+.visual h2 {
+    display: none;/* 숨김 */
+}
+.visual .swiper {
+    width: 100%;
+    height: 100%; /* visual의 높이와 동일하게 */
+    
+}
+.visual .swiper ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--section-min-height);
+}
+.visual .swiper ul li .photo {
+    overflow: hidden;
+    position: absolute; /* li를 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+.visual .swiper ul li.video .photo::before {
+    content: "";
+    position: absolute; /* photo 기준으로 정렬 */
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+}
+.visual .swiper ul li .photo img, 
+.visual .swiper ul li .photo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.visual .swiper ul li .visual_txt {
+    text-align: center;
+    color: #fff;
+}
+.visual .swiper ul li .visual_txt h3 {
+    font-size: 3.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.visual .swiper ul li .visual_txt p {
+    font-size: 2.05rem;
+    margin: 1.2em 0 0 0;
+}
+
+.tree {
+    font-size: 100px;
+    text-align: center;
+}
+.introduce, footer {
     background-color: var(--main-color);
     color: #fff;
     font-size: 100px;
     text-align: center;
 }
-.tree, .story {
+.story {
     background-color: var(--sub-color);
     color: #fff;
     font-size: 100px;
     text-align: center;
+}
+.quick_nav {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    z-index: 100;
+    color: #fff;
 }

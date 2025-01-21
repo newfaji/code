@@ -48,15 +48,18 @@ body, html {
     --header-h: 100px;
     --main-color: #003483;
     --sub-color: #00A287;
+    --title-txt-color: #1d1d1d;
+    --section-min-height: 700px;
 }
 @media screen and (max-width:1300px){
     :root {
         --base-font-size: 16px;
     }
 }/* media */
-@media screen and (max-width:1000px){ 
+@media screen and (max-width:1024px){
     :root {
         --base-font-size: 15px;
+        --section-min-height: 500px; /* 나중에 0으로 바꿔!! */
     }
 }/* media */
 @media screen and (max-width:768px){ 
