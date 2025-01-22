@@ -59,7 +59,7 @@ body, html {
 @media screen and (max-width:1024px){
     :root {
         --base-font-size: 15px;
-        --section-min-height: 500px; /* 나중에 0으로 바꿔!! */
+        --section-min-height: 0; /* 나중에 0으로 바꿔!! */
     }
 }/* media */
 @media screen and (max-width:768px){ 

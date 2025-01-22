@@ -23,10 +23,12 @@
     <div id="wrap">
         <!-- pc버전에서 메뉴에 마우스를 올리면 : menu_pc
              모바일에서 메뉴를 클릭해서 열면 : menu_mo
-             배경이 흰색이라 header의 글씨가 검은색으로 바뀌어야 할때 : dark -->
-        <header class="menu_mo">
+             배경이 흰색이라 header의 글씨가 검은색으로 바뀌어야 할때 : dark 
+             모바일에서 조금이라도 스크롤되면 header에 fixed 클래스 추가
+            -->
+        <header class="fixed">
             <h1 class="logo"><a href="index.html">생명의숲 forest for life</a></h1>
-            <nav class="gnb">
+            <nav class="gnb" id="skip_nav">
                 <button class="gnb_open">메뉴열기</button>
                 <div class="gnb_wrap">
                     <ul class="depth1">
@@ -84,7 +86,7 @@
         </header>
         <div id="fullpage">
             <section class="visual section fp-auto-height-responsive">
-                <h2>팝업</h2>
+                <h2 id="skip_content">팝업</h2>
                 <!-- fp-auto-height-responsive 모바일에서 콘텐츠의 높이를 브라우저 높이대로 셋팅X, 디자인한 만큼만 -->
                 <div class="swiper">
                     <ul class="swiper-wrapper">
@@ -125,7 +127,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="swiper-pagination"></div>
+                    <div class="paging"></div>
                 </div><!--swiper-->
             </section>
             <section class="tree section fp-auto-height-responsive">
@@ -142,12 +144,22 @@
                 footer
             </footer>
         </div><!--fullpage-->
-        <nav class="quick_nav">
+        <!-- 다른 배경색에서 색상 변경 시  color2 클래스 추가 -->
+        <div class="quick_link ">
+            <ul>
+                <li class="link1"><a href="#n"><span>마이트리</span></a></li>
+                <li class="link2"><a href="#n"><span>해피빈</span></a></li>
+                <li class="link3"><a href="#n"><span>같이가치</span></a></li>
+            </ul>
+            <button class="top"><span>TOP</span></button>
+        </div>
+        <!-- 배경이 흰색이라 글자가 검은색으로 들어갈때 dark 클래스를 추가 -->
+        <nav class="quick_nav dark">
             <ul>
                 <li><a href="#main"><span>Main</span></a></li>
                 <li><a href="#tree"><span>나무심기</span></a></li>
                 <li><a href="#introduce"><span>숲 활동</span></a></li>
-                <li><a href="#story"><span>활동이야기</span></a></li>
+                <li class="active"><a href="#story"><span>활동이야기</span></a></li>
             </ul>
         </nav>
     </div><!--wrap-->
