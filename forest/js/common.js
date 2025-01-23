@@ -2,6 +2,7 @@ $(document).ready(function(){
     
     let window_w //브라우저의 넓이
     let device_status //pc - mobile 현재 상태를 저장
+    let scrolling = $(window).scrollTop() //스크롤 된값
 
     function device_chk(){
         window_w = $(window).width()
@@ -17,6 +18,11 @@ $(document).ready(function(){
     $(window).resize(function(){ //브라우저가 리사이즈 할때마다
         device_chk()
     })//window.resize
+
+    $(window).scroll(function(){
+        scrolling = $(window).scrollTop()
+        //console.log(scrolling)
+    })
 
 
     /********************* 모바일 1차 메뉴 열기 :: START *************************
@@ -86,8 +92,29 @@ $(document).ready(function(){
             $('header .gnb .gnb_wrap ul.depth1 > li').removeClass('over')
         }
     })
-
-
     /********************* pc 메뉴 :: END **************************/
+
+    /********************* 모바일에서 header fixed 클래스 추가 :: START *********************
+     * 
+     * 스크롤을 내리면 header fixed 클래스 추가
+     * 스크롤이 다시 맨 상단에 올라가면 fixed 클래스 삭제
+    */
+
+    function header_fixed(){
+        if(device_status == 'mobile'){
+            if(scrolling > 0){
+                $('header').addClass('fixed')
+            }else{
+                $('header').removeClass('fixed')
+            }
+        }
+    }
+
+    header_fixed()
+    $(window).scroll(function(){
+        header_fixed()
+    })
+
+    /********************* 모바일에서 header fixed 클래스 추가 :: END **********************/
 
 })//document.ready

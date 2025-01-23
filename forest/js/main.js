@@ -29,6 +29,10 @@ $(document).ready(function(){
 				$('header').addClass('dark')
 				$('.quick_nav').addClass('dark')
 				$('.quick_link').removeClass('color2')
+
+				//나무 색션이 열렸을때 애니메이션 작동
+				$('.tree .numbering .number .counter').counterUp()
+
 			}else if(destination.index == 2){
 				console.log('숲 활동');
 				$('header').removeClass('dark')
@@ -36,6 +40,11 @@ $(document).ready(function(){
 				$('.quick_link').addClass('color2')
 			}else if(destination.index == 3){
 				console.log('활동이야기');
+				$('header').addClass('dark')
+				$('.quick_nav').addClass('dark')
+				$('.quick_link').removeClass('color2')
+			}else{
+				console.log('풋터다....')
 			}
 		},
 		responsiveWidth: 1025, /* fullpage를 적용시키지 않을 모바일 사이즈 */
@@ -65,4 +74,23 @@ $(document).ready(function(){
 		},
 
 	});
+
+	/*  생명의숲 활동이야기 */
+	const story_swiper = new Swiper('.story .list .swiper', { /* 팝업을 감싼는 요소의 class명 */
+		slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+		spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+		breakpoints: {
+			1025: { /* 1025이상일때 부터 적용 */
+				slidesPerView: 3,
+				spaceBetween: 24,
+			},
+			1281: { 
+				slidesPerView: 4,
+				spaceBetween: 24,
+			},
+		},
+		loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+	});
+
+	
 })//document.ready
